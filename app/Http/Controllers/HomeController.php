@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Inertia\Inertia;
 use App\Models\Produk;
 use App\Models\Review;
 use App\Models\Toko;
@@ -11,14 +10,15 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $produk = Produk::all(); // semua produk
+        $produks = Produk::all(); // semua produk
         $reviews = Review::all(); // semua review
-        $shop = Toko::first(); // hanya satu toko
+        $shops = Toko::first(); // hanya satu toko
 
-        return Inertia::render('Welcome', [
-            'produk' => $produk,
+        // landing home.blade.php
+        return view('Home', [
+            'produk' => $produks,
             'reviews' => $reviews,
-            'shop' => $shop,
+            'shop' => $shops,
         ]);
     }
 }

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use App\Models\Produk; // import the Produk model
 use App\Models\OpsiProduk; // import the OpsiProduk model
 use Illuminate\Http\Request;
-use Inertia\Inertia;
 
 class ProdukController extends Controller
 {
@@ -20,7 +19,10 @@ class ProdukController extends Controller
     // Tampilkan Halaman Tambah Produk
     public function create()
     {
-        return Inertia::render('CrudForm/CreateProduct');
+        // return Inertia::render('CrudForm/CreateProduct');
+        // blade
+        return view('CrudForm.CreateProduct');
+
     }
 
     // Simpan Produk ke Database
@@ -58,6 +60,8 @@ class ProdukController extends Controller
         return Inertia::render('Produks/Edit', [
             'produk' => $produk
         ]);
+        // blade
+        
     }
 
     // Edit produk

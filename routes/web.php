@@ -25,12 +25,12 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Route untuk login user dengan google
 Route::middleware('guest')->group(function () {
-Route::get('/auth/google/redirect', [UserAuthController::class, 'redirect'])->name('google.login'); 
+Route::get('/auth/google/redirect', [UserAuthController::class, 'redirect'])->name('auth.google.login'); 
 Route::get('/auth/google/callback', [UserAuthController::class, 'handleGoogleCallback']);
 });
 // Route untuk logout user dengan google
 Route::middleware('auth')->group(function () {
-    Route::post('/auth/google/logout', [UserAuthController::class, 'logout'])->name('google.logout');
+    Route::post('/auth/google/logout', [UserAuthController::class, 'logout'])->name('auth.google.logout');
 });
 
 Route::middleware('admin')->group(function () {
