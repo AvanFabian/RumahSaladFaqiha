@@ -48,23 +48,22 @@ class ProdukController extends Controller
             ->with('success', 'Produk created successfully.');
     }
 
-    // Tampilkan Halaman Produk
+    // Halaman Produk Umum
     public function show(Produk $produk)
     {
-        return Inertia::render('Produks/Show', [
+        return view('Produks.Show', [
             'produk' => $produk
         ]);
     }
+    // halaman Edit produk
     public function edit(Produk $produk)
     {
-        return Inertia::render('Produks/Edit', [
+        return view('Produks.Edit', [
             'produk' => $produk
         ]);
-        // blade
-        
     }
 
-    // Edit produk
+    // proses backend Edit produk
     public function update(Request $request, Produk $produk)
     {
         $request->validate([
