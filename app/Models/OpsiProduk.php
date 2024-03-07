@@ -9,7 +9,7 @@ class OpsiProduk extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'nama',
+        'nama_opsi',
         'id_produk',
     ];
     // one to one of produk

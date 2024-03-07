@@ -11,7 +11,9 @@ class ReviewController extends Controller
     // Tampilkan Halaman Tambah Review
     public function create()
     {
-        return Inertia::render('CrudForm/CreateReview');
+        // return Inertia::render('CrudForm/CreateReview');
+        // blade
+        return view('crud.CreateReview');
     }
     // Simpan Review ke Database
     public function store(Request $request)
