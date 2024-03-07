@@ -28,12 +28,12 @@
       <nav class="transition-all duration-300 ease-in-out">
          {{-- {/* menu tampilan dekstop */} --}}
          <div class="hidden lg:flex lg:flex-row lg:text-white gap-x-6">
-            <a href="#home" class="capitalize hover:text-[#ffc107]">home</a>
-            <a href="#about" class="capitalize hover:text-[#ffc107]">about</a>
-            <a href="#menu" class="capitalize hover:text-[#ffc107]">menu salad</a>
-            <a href="#products" class="capitalize hover:text-[#ffc107]">menu lain</a>
-            <a href="#review" class="capitalize hover:text-[#ffc107]">review</a>
-            <a href="#sosmed" class="capitalize hover:text-[#ffc107]">sosmed</a>
+            <a href="#home" class="capitalize hover:text-[#FF9BD2]">home</a>
+            <a href="#about" class="capitalize hover:text-[#FF9BD2]">about</a>
+            <a href="#menu" class="capitalize hover:text-[#FF9BD2]">menu salad</a>
+            <a href="#products" class="capitalize hover:text-[#FF9BD2]">menu lain</a>
+            <a href="#review" class="capitalize hover:text-[#FF9BD2]">review</a>
+            <a href="#sosmed" class="capitalize hover:text-[#FF9BD2]">sosmed</a>
          </div>
          {{-- {/* menu tampilan mobile */} --}}
          <div class="lg:hidden">
@@ -94,16 +94,16 @@
             <form action="{{ route('auth.google.logout') }}" method="POST">
                @csrf
                <button type="submit"
-                  class="btn hover:bg-[#b9b8b8] uppercase font-bold lg:px-7 text-[#020202] bg-white rounded-2xl">
-                  Logout&nbsp;
+                  class="btn uppercase font-bold lg:px-7 text-[#F8F4EC] bg-[#FF3FA4] hover:bg-[#ff61b5] rounded-2xl">
+                  Keluar&nbsp;
                </button>
             </form>
          @endauth
    
          @guest
-            <a class="btn hover:bg-[#b9b8b8] uppercase font-bold lg:px-7 text-[#020202] bg-white rounded-2xl"
+            <a class="btn uppercase font-bold lg:px-7 text-[#F8F4EC] bg-[#FF3FA4] hover:bg-[#ff61b5] rounded-2xl"
                href="{{ route('auth.google.login') }}">
-               Login
+               Masuk
             </a>
          @endguest
       </div>
@@ -116,9 +116,9 @@
    {{-- End Content --}}
 
    {{-- Footer --}}
-   <footer class="footer footer-center p-8 bg-[#F8F4EC] text-base-content">
+   <footer class="footer footer-center flex p-7 justify-center bg-[#F8F4EC] text-base-content">
       <aside>
-        <p class="text-[#57375D]">By Rumah Salad Faqiha | All Rights Reserved</p>
+        <span class="text-[#8D334E] text-xl ">By Rumah Salad Faqiha | All Rights Reserved</span>
       </aside>
     </footer>
    {{-- End Footer --}}
