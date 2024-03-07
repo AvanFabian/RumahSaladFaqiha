@@ -17,6 +17,7 @@ class Produk extends Model
     // one to one of opsi produk
     public function opsiProduk()
     {
-        return $this->hasOne(OpsiProduk::class, 'id_produk', 'id');
+        // id is the name of the column in the produks table that is used to establish the relationship with the opsi_produks table. This column contains the ID of the product.
+        return $this->hasMany(OpsiProduk::class, 'id_produk', 'id');
     }
 }

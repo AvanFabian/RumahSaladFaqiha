@@ -7,14 +7,6 @@ use Illuminate\Http\Request;
 
 class ProdukController extends Controller
 {
-    // Tampilkan Halaman Produk (pending dulu)
-    // public function index()
-    // {
-    //     $produks = Produk::latest()->get();
-    //     return Inertia::render('Produks/Index', [
-    //         'produks' => $produks
-    //     ]);
-    // }
 
     // Tampilkan Halaman Tambah Produk
     public function create()
@@ -33,14 +25,14 @@ class ProdukController extends Controller
             'desc' => 'required',
             'image' => 'required',
             'harga' => 'required',
-            'nama' => 'required', // validate the product option field
+            'nama_opsi' => 'required', // validate the product option field
         ]);
 
         $produk = Produk::create($request->all());
 
         // Create the product option
         OpsiProduk::create([
-            'nama' => $request->nama,
+            'nama_opsi' => $request->nama_opsi,
             'id_produk' => $produk->id,
         ]);
 
@@ -71,14 +63,14 @@ class ProdukController extends Controller
             'desc' => 'required',
             'image' => 'required',
             'harga' => 'required',
-            'nama' => 'required', // validate the product option field
+            'nama_opsi' => 'required', // validate the product option field
         ]);
 
         $produk->update($request->all());
 
         // Update the product option
         $produk->opsiProduk->update([
-            'nama' => $request->nama,
+            'nama_opsi' => $request->nama_opsi,
         ]);
 
         // Redirect to the products index page
