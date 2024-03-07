@@ -21,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // Simpan Variabel isAdmin ke Semua View agar bisa diakses di semua view
         View::composer('*', function ($view) {
             $view->with('isAdmin', Auth::guard('admin')->check());
         });
