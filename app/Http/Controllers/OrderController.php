@@ -35,7 +35,7 @@ class OrderController extends Controller
     // Tampilkan Halaman Tambah Order (show method)
     public function show()
     {
-        return view('admin.crud.CreateProduct');
+        return view('admin.crud.Create');
     }
 
     // Hapus Order dari Database (removeProduct method)
