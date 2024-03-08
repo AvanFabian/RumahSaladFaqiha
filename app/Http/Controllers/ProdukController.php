@@ -11,9 +11,7 @@ class ProdukController extends Controller
     // Tampilkan Halaman Tambah Produk
     public function create()
     {
-        // return Inertia::render('CrudForm/CreateProduct');
-        // blade
-        return view('CrudForm.CreateProduct');
+        return view('produk.Create');
 
     }
 
@@ -25,18 +23,18 @@ class ProdukController extends Controller
             'desc' => 'required',
             'image' => 'required',
             'harga' => 'required',
-            'nama_opsi' => 'required', // validate the product option field
+            // 'nama_opsi' => 'required', // validate the product option field
         ]);
 
         $produk = Produk::create($request->all());
 
         // Create the product option
-        OpsiProduk::create([
-            'nama_opsi' => $request->nama_opsi,
-            'id_produk' => $produk->id,
-        ]);
+        // OpsiProduk::create([
+        //     'nama_opsi' => $request->nama_opsi,
+        //     'id_produk' => $produk->id,
+        // ]);
 
-        return redirect()->route('produks.index')
+        return redirect()->route('produk.index') 
             ->with('success', 'Produk created successfully.');
     }
 
@@ -50,7 +48,7 @@ class ProdukController extends Controller
     // halaman Edit produk
     public function edit(Produk $produk)
     {
-        return view('Produks.Edit', [
+        return view('produks.Edit', [
             'produk' => $produk
         ]);
     }

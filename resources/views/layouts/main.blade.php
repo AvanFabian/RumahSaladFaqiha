@@ -110,7 +110,7 @@
    </header>
    {{-- End Navbar --}}
    {{-- Content --}}
-   <div class="">
+   <div class="bg-[#F8F4EC]">
       @yield('content')
    </div>
    {{-- End Content --}}

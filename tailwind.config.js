@@ -12,6 +12,6 @@ export default {
       'custom60': '60px',
     },
   },
-  plugins: [require("daisyui")],
+  plugins: [require("daisyui"), require('@tailwindcss/forms')],
 }
 
