@@ -34,17 +34,10 @@ class ProdukController extends Controller
         //     'id_produk' => $produk->id,
         // ]);
 
-        return redirect()->route('produk.index') 
+        return redirect()->route('admin.dashboard') 
             ->with('success', 'Produk created successfully.');
     }
 
-    // Halaman Produk Umum
-    public function show(Produk $produk)
-    {
-        return view('Produks.Show', [
-            'produk' => $produk
-        ]);
-    }
     // halaman Edit produk
     public function edit(Produk $produk)
     {

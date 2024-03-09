@@ -18,11 +18,10 @@
    <link rel="shortcut icon" type="image/png" href="{{ url('') }}">
 </head>
 
-<body class="">
+<body class="relative lg:min-h-screen bg-[#f2f2f2]">
    {{-- Navbar --}}
    <nav id="header" class="bg-[#f2f2f2] fixed w-full z-10 top-0 shadow lg:px-4">
       <div class="w-full container mx-auto flex items-center mt-0 pt-3 pb-3 md:pb-0">
-
          <div class="w-1/2">
             <a class="text-gray-900 text-base xl:text-xl no-underline hover:no-underline font-bold" href="#">
                <i class="fas fa-sun text-pink-600 pr-3"></i> Rumah Salad Faqiha
@@ -81,7 +80,7 @@
    </div>
 
    {{-- Footer --}}
-   <footer class="footer bg-[#f2f2f2] footer-center flex p-3 justify-center text-base-content">
+   <footer class="lg:absolute lg:bottom-0 footer bg-[#f2f2f2] footer-center flex p-3 justify-center text-base-content">
       <aside>
         <span class="font-bold text-black text-xl ">By Rumah Salad Faqiha | All Rights Reserved</span>
       </aside>
