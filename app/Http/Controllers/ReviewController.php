@@ -13,7 +13,7 @@ class ReviewController extends Controller
     {
         // return Inertia::render('CrudForm/CreateReview');
         // blade
-        return view('crud.CreateReview');
+        return view('admin.review.Create');
     }
     // Simpan Review ke Database
     public function store(Request $request)
@@ -29,17 +29,11 @@ class ReviewController extends Controller
             ->with('success', 'Review created successfully.');
     }
 
-    // Tampilkan Halaman Review
-    public function show(Review $review)
-    {
-        return Inertia::render('Reviews/Show', [
-            'review' => $review
-        ]);
-    }
+
     // Tampilkan Halaman Edit Review
     public function edit(Review $review)
     {
-        return Inertia::render('Reviews/Edit', [
+        return view('admin.review.Edit', [
             'review' => $review
         ]);
     }

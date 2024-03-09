@@ -11,7 +11,7 @@ class ProdukController extends Controller
     // Tampilkan Halaman Tambah Produk
     public function create()
     {
-        return view('produk.Create');
+        return view('admin.produk.Create');
 
     }
 
