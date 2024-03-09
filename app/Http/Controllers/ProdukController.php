@@ -21,22 +21,29 @@ class ProdukController extends Controller
         $request->validate([
             'title' => 'required',
             'desc' => 'required',
-            'image' => 'required',
+            'image' => 'required|image',
             'harga' => 'required',
             // 'nama_opsi' => 'required', // validate the product option field
         ]);
 
-        $produk = Produk::create($request->all());
+        $imagePath = $request->file('image')->store('uploads', 'public');
+        
+        $produk = Produk::create([
+            'title' => $request->title,
+            'desc' => $request->desc,
+            'image' => $imagePath,
+            'harga' => $request->harga,
+        ]);
 
-        // Create the product option
-        // OpsiProduk::create([
-        //     'nama_opsi' => $request->nama_opsi,
-        //     'id_produk' => $produk->id,
-        // ]);
-
-        return redirect()->route('admin.dashboard') 
-            ->with('success', 'Produk created successfully.');
+        
+        return redirect()->route('produk.create') 
+        ->with('success', 'Produk created successfully.');
     }
+    // Create the product option
+    // OpsiProduk::create([
+    //     'nama_opsi' => $request->nama_opsi,
+    //     'id_produk' => $produk->id,
+    // ]);
 
     // halaman Edit produk
     public function edit(Produk $produk)
@@ -59,26 +66,26 @@ class ProdukController extends Controller
 
         $produk->update($request->all());
 
-        // Update the product option
-        $produk->opsiProduk->update([
-            'nama_opsi' => $request->nama_opsi,
-        ]);
-
+        
         // Redirect to the products index page
-        return redirect()->route('produks.index')
-            ->with('success', 'Produk updated successfully');
+        return redirect()->route('admin.dashboard')
+        ->with('success', 'Produk updated successfully');
     }
+    // Update the product option
+    // $produk->opsiProduk->update([
+    //     'nama_opsi' => $request->nama_opsi,
+    // ]);
 
     // Hapus produk
     public function destroy(Produk $produk)
     {
         // Delete the product option
-        $produk->opsiProduk->delete();
+        // $produk->opsiProduk->delete();
 
         $produk->delete();
 
         // Redirect to the products
-        return redirect()->route('produks.index')
+        return redirect()->route('admin.dashboard')
             ->with('success', 'Produk deleted successfully');
     }
 }

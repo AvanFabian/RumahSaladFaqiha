@@ -43,7 +43,7 @@ Route::middleware('admin')->group(function () {
     Route::get('/produk/{id}', [ProdukController::class, 'show'])->name('produk.show');
     Route::get('/produk/{id}/edit', [ProdukController::class, 'edit'])->name('produk.edit');
     Route::put('/produk/{id}', [ProdukController::class, 'update'])->name('produk.update');
-    Route::delete('/produk/{id}', [ProdukController::class, 'destroy'])->name('produk.destroy');
+    Route::delete('/produk/{produk}', [ProdukController::class, 'destroy'])->name('produk.destroy');
     
     // Review routes
     Route::get('/review/create', [ReviewController::class, 'create'])->name('review.create');

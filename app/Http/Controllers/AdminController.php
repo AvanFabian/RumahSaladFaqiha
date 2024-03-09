@@ -17,8 +17,8 @@ class AdminController extends Controller
         // blade
         return view('admin.Dashboard', [
             'produk' => $produks,
-            'reviews' => $reviews,
-            'infotokos' => $infotokos,
+            'review' => $reviews,
+            'infotoko' => $infotokos,
         ]);
     }
 }

@@ -1,61 +1,52 @@
-      <section className="bg-gray-900">
-         <div className="py-8 px-4 mx-auto max-w-2xl lg:py-16">
-            <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">Add a new Review</h2>
-            <form action="#">
-               <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
-                  <div className="sm:col-span-2">
-                     <label for="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Review
-                        Name</label>
-                     <input type="text" name="name" id="name"
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Type Review name" required="" />
-                  </div>
-                  <div className="w-full">
-                     <label for="brand"
-                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Brand</label>
-                     <input type="text" name="brand" id="brand"
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Review brand" required="" />
-                  </div>
-                  <div className="w-full">
-                     <label for="price"
-                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
-                     <input type="number" name="price" id="price"
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="$2999" required="" />
-                  </div>
-                  <div>
-                     <label for="category"
-                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
-                     <select id="category"
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                        <option selected="">Select category</option>
-                        <option value="TV">TV/Monitors</option>
-                        <option value="PC">PC</option>
-                        <option value="GA">Gaming/Console</option>
-                        <option value="PH">Phones</option>
-                     </select>
-                  </div>
-                  <div>
-                     <label for="item-weight"
-                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Item Weight
-                        (kg)</label>
-                     <input type="number" name="item-weight" id="item-weight"
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="12" required="" />
-                  </div>
-                  <div className="sm:col-span-2">
-                     <label for="description"
-                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
-                     <textarea id="description" rows="8"
-                        className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Your description here"></textarea>
-                  </div>
-               </div>
-               <button type="submit"
-                  className="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
-                  Add Review
-               </button>
-            </form>
-         </div>
-      </section>
+@extends('admin.layouts.admin')
+@section('title', 'Tambahkan Produk')
+
+@section('content')
+<div class="flex flex-col items-center min-h-screen pt-6 bg-gray-100 sm:justify-center sm:pt-0">
+  <div class="w-full px-16 py-20 mt-6 overflow-hidden bg-white rounded-lg lg:max-w-4xl">
+    <div class="mb-4">
+      <h1 class="font-serif text-3xl font-bold underline decoration-gray-400">
+        Create Post
+      </h1>
+    </div>
+
+    <div class="w-full px-6 py-4 bg-white rounded shadow-md ring-1 ring-gray-900/10">
+      <form method="POST" action="{{ route('review.store') }}" enctype="multipart/form-data">
+        @csrf
+        <!-- Title -->
+        <div>
+          <label class="block text-sm font-bold text-gray-700" for="nama">
+            Nama Pelanggan
+          </label>
+      
+          <input
+            class="block w-full mt-1 border-gray-300 rounded-md shadow-sm placeholder:text-gray-400 placeholder:text-right focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            type="text" id="nama" name="nama" placeholder="Nama Pelanggan" />
+        </div>
+      
+   
+        <!-- Review -->
+        <div class="mt-4">
+          <label class="block text-sm font-bold text-gray-700" for="komentar">
+            Review Pelanggan
+          </label>
+          <input
+            class="block w-full mt-1 border-gray-300 rounded-md shadow-sm placeholder:text-gray-400 placeholder:text-right focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            type="text" id="komentar" name="komentar" placeholder="Review dari Pengguna" />
+        </div>
+      
+        <div class="flex items-center justify-start mt-4 gap-x-2">
+          <button type="submit"
+            class="px-6 py-2 text-sm font-semibold rounded-md shadow-md text-sky-100 bg-sky-500 hover:bg-sky-700 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300">
+            Save
+          </button>
+          <button type="submit"
+            class="px-6 py-2 text-sm font-semibold text-gray-100 bg-gray-400 rounded-md shadow-md hover:bg-gray-600 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+@endsection
