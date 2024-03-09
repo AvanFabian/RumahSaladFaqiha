@@ -44,16 +44,18 @@ Route::middleware('admin')->group(function () {
     Route::get('/produk/{id}/edit', [ProdukController::class, 'edit'])->name('produk.edit');
     Route::put('/produk/{id}', [ProdukController::class, 'update'])->name('produk.update');
     Route::delete('/produk/{id}', [ProdukController::class, 'destroy'])->name('produk.destroy');
-});
-
-Route::middleware('auth')->group(function () {
-    // Review routes (user can only create, edit, and delete their own review)
+    
+    // Review routes
     Route::get('/review/create', [ReviewController::class, 'create'])->name('review.create');
     Route::post('/review', [ReviewController::class, 'store'])->name('review.store');
     Route::get('/review/{id}', [ReviewController::class, 'show'])->name('review.show');
     Route::get('/review/{id}/edit', [ReviewController::class, 'edit'])->name('review.edit');
     Route::put('/review/{id}', [ReviewController::class, 'update'])->name('review.update');
     Route::delete('/review/{id}', [ReviewController::class, 'destroy'])->name('review.destroy');
+});
+
+Route::middleware('auth')->group(function () {
+    // Review routes (user can only create, edit, and delete their own review)
 });
 
 Route::middleware('auth')->group(function () {
