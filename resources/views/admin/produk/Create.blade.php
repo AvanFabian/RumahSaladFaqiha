@@ -74,7 +74,7 @@
                   </label>
                   <input
                      class="block w-full mt-1 border-gray-300 rounded-md shadow-sm placeholder:text-gray-400 placeholder:text-right focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 {{ $errors->has('harga') ? 'border-red-500' : '' }}"
-                     type="number" id="harga" name="harga" placeholder="Product Price" />
+                     type="number" id="harga" name="harga" placeholder="Product Price" step="1000" min="0" required />
 
                   @if ($errors->has('harga'))
                      <p class="text-red-500 text-xs mt-2">{{ $errors->first('harga') }}</p>
@@ -101,4 +101,5 @@
          </div>
       </div>
    </div>
+
 @endsection

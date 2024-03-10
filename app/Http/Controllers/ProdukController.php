@@ -15,6 +15,8 @@ class ProdukController extends Controller
     //     'id_produk' => $produk->id,
     // ]);
 
+    
+
     // Tampilkan Halaman Tambah Produk
     public function create()
     {

@@ -8,6 +8,12 @@ use App\Models\CartItem;
 
 class CartController extends Controller
 {
+
+    public function cart()
+    {
+        // view chart.blade.php
+        return view('Chart');
+    }
     public function addToCart(Request $request)
     {
         // Add item to cart

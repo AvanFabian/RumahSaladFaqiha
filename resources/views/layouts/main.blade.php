@@ -30,8 +30,8 @@
          <div class="hidden lg:flex lg:flex-row lg:text-white gap-x-6">
             <a href="#home" class="capitalize hover:text-[#FF9BD2]">home</a>
             <a href="#about" class="capitalize hover:text-[#FF9BD2]">about</a>
-            <a href="#menu" class="capitalize hover:text-[#FF9BD2]">menu salad</a>
-            <a href="#products" class="capitalize hover:text-[#FF9BD2]">menu lain</a>
+            <a href="#menusalad" class="capitalize hover:text-[#FF9BD2]">menu salad</a>
+            <a href="#menulain" class="capitalize hover:text-[#FF9BD2]">menu lain</a>
             <a href="#review" class="capitalize hover:text-[#FF9BD2]">review</a>
             <a href="#sosmed" class="capitalize hover:text-[#FF9BD2]">sosmed</a>
          </div>
@@ -60,35 +60,9 @@
       {{-- {/* icon navbar untuk screen dekstop */} --}}
       <div class="hidden lg:flex lg:flex-row lg:gap-11">
    
-         <div class="drawer drawer-end">
-            <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
-            <div class="drawer-content my-auto">
-               {{-- {/* Page content here */} --}}
-               <label htmlFor="my-drawer-4" class="drawer-button">
-                  LogoChart
-               </label>
-            </div>
-            <div class="drawer-side">
-               <label htmlFor="my-drawer-4" aria-label="close sidebar" class="drawer-overlay"></label>
-               <ul class="menu p-4 w-[390px] gap-y-5 min-h-full bg-[#020202] text-base-content">
-                  <div class="cart-item gap-x-5  flex flex-row">
-                     <div class="cursor-pointer basis-1/7">
-                        Silang
-                     </div>
-                     <img src={item.img} alt="" class="basis-1/3" />
-                     <div class="text-[#f6f6f6] basis-1/2">
-                        <h3>cart item 01</h3>
-                        <div class="price">$15.99/-</div>
-                     </div>
-                  </div>
-                  <a href="#" class="btn text-[#0f0e0e] bg-white mx-auto w-1/2">
-                     checkout now
-                  </a>
-               </ul>
-            </div>
+         <div class="my-auto">
+            <a href="{{ route('chart') }}" target="_blank">Chart</a>
          </div>
-   
-         <div id="menu-btn" class="w-fit text-white cursor-pointer">Bars</div>
    
          @auth
             <form action="{{ route('auth.google.logout') }}" method="POST">

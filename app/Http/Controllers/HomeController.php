@@ -10,13 +10,13 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $produks = Produk::all(); // semua produk
+        $menusalads = Produk::all(); // semua produk
         $reviews = Review::all(); // semua review
         $shops = InfoToko::first(); // hanya satu toko
 
         // landing home.blade.php
         return view('Home', [
-            'produk' => $produks,
+            'menusalad' => $menusalads,
             'reviews' => $reviews,
             'shop' => $shops,
         ]);

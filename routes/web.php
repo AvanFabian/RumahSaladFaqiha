@@ -59,9 +59,9 @@ Route::middleware('auth')->group(function () {
 
 // Logika Checkout produk bagi pengguna
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/products', [ProdukController::class, 'chart'])->name('produk.chart');
-    Route::post('/cart', [CartController::class, 'addToCart']);
-    Route::post('/checkout', [OrderController::class, 'submitCheckout']);
+    Route::get('/cart', [CartController::class, 'cart'])->name('chart');
+    Route::post('/cart', [CartController::class, 'addToCart'])->name('cart.add');
+    Route::post('/checkout', [OrderController::class, 'submitCheckout'])->name('checkout.submit');
 });
 
 require __DIR__.'/auth.php';
