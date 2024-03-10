@@ -77,18 +77,30 @@
                            </td>
 
                            <td class="text-sm font-medium whitespace-no-wrap border-b border-gray-200 ">
-                              {{-- Delete --}}
-                              <form method="POST" action="{{ route('produk.destroy', $product->id) }}">
-                                 @csrf
-                                 @method('DELETE')
-                                 <button type="submit">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-600 hover:text-red-800"
-                                       fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                          d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                    </svg>
-                                 </button>
-                              </form>
+                              <!-- Delete button -->
+                              <button type="button" onclick="deleteModal.showModal()">
+                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-600 hover:text-red-800"
+                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                       d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                 </svg>
+                              </button>
+
+                              <!-- Delete confirmation modal -->
+                              <dialog id="deleteModal" class="modal">
+                                 <div class="modal-box">
+                                    <h3 class="font-bold text-lg">Confirm Deletion</h3>
+                                    <p class="py-4">Are you sure you want to delete this product?</p>
+                                    <div class="modal-action">
+                                       <form method="POST" action="{{ route('produk.destroy', $product->id) }}">
+                                          @csrf
+                                          @method('DELETE')
+                                          <button type="submit" class="btn">Yes, delete it</button>
+                                       </form>
+                                       <button class="btn" onclick="deleteModal.close()">No, keep it</button>
+                                    </div>
+                                 </div>
+                              </dialog>
                            </td>
                         </tr>
                      @empty
@@ -154,8 +166,7 @@
                            <td
                               class="text-sm font-medium leading-5 text-center whitespace-no-wrap border-b border-gray-200 ">
                               {{-- Edit --}}
-                              <a href="{{ route('review.edit', $review->id) }}"
-                                 class="text-gray-600 hover:text-gray-900">
+                              <a href="{{ route('review.edit', $review->id) }}" class="text-gray-600 hover:text-gray-900">
                                  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -166,18 +177,30 @@
                            </td>
 
                            <td class="text-sm font-medium whitespace-no-wrap border-b border-gray-200 ">
-                              {{-- Delete --}}
-                              <form method="POST" action="{{ route('produk.destroy', $review->id) }}">
-                                 @csrf
-                                 @method('DELETE')
-                                 <button type="submit">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-600 hover:text-red-800"
-                                       fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                          d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                    </svg>
-                                 </button>
-                              </form>
+                              <!-- Delete button -->
+                              <button type="button" onclick="deleteModal.showModal()">
+                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-600 hover:text-red-800"
+                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                       d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                 </svg>
+                              </button>
+
+                              <!-- Delete confirmation modal -->
+                              <dialog id="deleteModal" class="modal">
+                                 <div class="modal-box">
+                                    <h3 class="font-bold text-lg">Confirm Deletion</h3>
+                                    <p class="py-4">Are you sure you want to delete this product?</p>
+                                    <div class="modal-action">
+                                       <form method="POST" action="{{ route('review.destroy', $review->id) }}">
+                                          @csrf
+                                          @method('DELETE')
+                                          <button type="submit" class="btn">Yes, delete it</button>
+                                       </form>
+                                       <button class="btn" onclick="deleteModal.close()">No, keep it</button>
+                                    </div>
+                                 </div>
+                              </dialog>
                            </td>
                         </tr>
                      @empty

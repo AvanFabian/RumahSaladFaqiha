@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 class ProdukController extends Controller
 {
 
+    // method kalo dibutuhkan:
+    // 'nama_opsi' => 'required', // validate the product option field
+    // OpsiProduk::create([
+    //     'nama_opsi' => $request->nama_opsi,
+    //     'id_produk' => $produk->id,
+    // ]);
+
     // Tampilkan Halaman Tambah Produk
     public function create()
     {
@@ -18,14 +25,22 @@ class ProdukController extends Controller
     // Simpan Produk ke Database
     public function store(Request $request)
     {
+        $messages = [
+            'title.required' => 'The title field is required.',
+            'desc.required' => 'The description field is required.',
+            'image.required' => 'The image field is required.',
+            'image.image' => 'The image must be an image file.',
+            'harga.required' => 'The price field is required.',
+            'harga.numeric' => 'The price must be a number.',
+        ];
+    
         $request->validate([
-            'title' => 'required',
+            'title' => 'required|max:255',
             'desc' => 'required',
             'image' => 'required|image',
-            'harga' => 'required',
-            // 'nama_opsi' => 'required', // validate the product option field
-        ]);
-
+            'harga' => 'required|numeric',
+        ], $messages);
+    
         $imagePath = $request->file('image')->store('uploads', 'public');
         
         $produk = Produk::create([
@@ -34,16 +49,11 @@ class ProdukController extends Controller
             'image' => $imagePath,
             'harga' => $request->harga,
         ]);
-
-        
+    
         return redirect()->route('produk.create') 
-        ->with('success', 'Produk created successfully.');
+        ->with('success', 'Product created successfully.');
     }
-    // Create the product option
-    // OpsiProduk::create([
-    //     'nama_opsi' => $request->nama_opsi,
-    //     'id_produk' => $produk->id,
-    // ]);
+
 
     // halaman Edit produk
     public function edit(Produk $id_produk)
@@ -53,15 +63,29 @@ class ProdukController extends Controller
         ]);
     }
 
+    // method kalo dibutuhkan:
+    // $produk->opsiProduk->update([
+    //     'nama_opsi' => $request->nama_opsi,
+    // ]);
+    
     // proses backend Edit produk
     public function update(Request $request, Produk $id_produk)
     {
+        $messages = [
+            'title.required' => 'The title field is required.',
+            'desc.required' => 'The description field is required.',
+            'image.required' => 'The image field is required.',
+            'image.image' => 'The image must be an image file.',
+            'harga.required' => 'The price field is required.',
+            'harga.numeric' => 'The price must be a number.',
+        ];
+    
         $request->validate([
-            'title' => 'required',
+            'title' => 'required|max:255',
             'desc' => 'required',
             'image' => 'required|image',
-            'harga' => 'required',
-        ]);
+            'harga' => 'required|numeric',
+        ], $messages);
     
         $imagePath = $request->file('image')->store('uploads', 'public');
     
@@ -73,12 +97,9 @@ class ProdukController extends Controller
         ]);
     
         return redirect()->route('admin.dashboard')
-            ->with('success', 'Produk updated successfully');
+            ->with('success', 'Product updated successfully');
     }
-    // Update the product option
-    // $produk->opsiProduk->update([
-    //     'nama_opsi' => $request->nama_opsi,
-    // ]);
+
 
     // Hapus produk
     public function destroy(Produk $id_produk)

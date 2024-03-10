@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Inertia\Inertia;
 
 class LoginAdminControlller extends Controller
 {
@@ -17,11 +16,15 @@ class LoginAdminControlller extends Controller
 
     public function login(Request $request)
     {
+        $messages = [
+            'username.required' => 'The username field is required.',
+            'password.required' => 'The password field is required.',
+        ];
+    
         $request->validate([
             'username' => 'required',
             'password' => 'required',
-        ]);
-        // dd($request->all());
+        ], $messages);
 
         $credentials = $request->only('username', 'password');
 
@@ -30,7 +33,7 @@ class LoginAdminControlller extends Controller
         }
 
         return back()->withErrors([
-            'username' => 'The provided credentials do not match our records.',
+            'username' => 'Username atau password salah.',
         ]);
     }
 

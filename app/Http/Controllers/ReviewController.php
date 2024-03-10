@@ -51,11 +51,11 @@ class ReviewController extends Controller
             ->with('success', 'Review updated successfully.');
     }
     // Hapus Review dari Database
-    public function destroy(Review $review)
+    public function destroy(Review $id_review)
     {
-        $review->delete();
+        $id_review->delete();
 
-        return redirect()->route('home')
+        return redirect()->route('admin.dashboard')
             ->with('success', 'Review deleted successfully.');
     }
 }

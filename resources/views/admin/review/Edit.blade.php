@@ -12,7 +12,7 @@
 
          <div class="w-full px-6 py-4 bg-white rounded shadow-md ring-1 ring-gray-900/10">
             {{-- HAndle error pas ngisi form --}}
-            @if ($errors->any())
+            {{-- @if ($errors->any())
                <div class="alert alert-error mb-4">
                   <ol>
                      @foreach ($errors->all() as $error)
@@ -20,7 +20,7 @@
                      @endforeach
                   </ol>
                </div>
-            @endif
+            @endif --}}
             <form method="POST" action="/review/{{ $review->id }}" enctype="multipart/form-data">
                @csrf
                <!-- Title -->
@@ -30,10 +30,13 @@
                   </label>
 
                   <input
-                     class="block w-full mt-1 border-gray-300 rounded-md shadow-sm placeholder:text-gray-400 placeholder:text-right focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                     class="block w-full mt-1 border-gray-300 rounded-md shadow-sm placeholder:text-gray-400 placeholder:text-right focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 {{ $errors->has('nama') ? 'border-red-500' : '' }}"
                      type="text" id="nama" name="nama" value="{{ $review->nama }}" required/>
-               </div>
 
+                  @if ($errors->has('nama'))
+                     <p class="text-red-500 text-xs mt-2">{{ $errors->first('nama') }}</p>
+                  @endif
+               </div>
 
                <!-- Review -->
                <div class="mt-4">
@@ -41,8 +44,12 @@
                      Review Pelanggan
                   </label>
                   <input
-                     class="block w-full mt-1 border-gray-300 rounded-md shadow-sm placeholder:text-gray-400 placeholder:text-right focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                     class="block w-full mt-1 border-gray-300 rounded-md shadow-sm placeholder:text-gray-400 placeholder:text-right focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 {{ $errors->has('komentar') ? 'border-red-500' : '' }}"
                      type="text" id="komentar" name="komentar" value="{{ $review->komentar }}" required/>
+
+                  @if ($errors->has('komentar'))
+                     <p class="text-red-500 text-xs mt-2">{{ $errors->first('komentar') }}</p>
+                  @endif
                </div>
                @if (session('success'))
                   <div class="alert alert-success mt-3">

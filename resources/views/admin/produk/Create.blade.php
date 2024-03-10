@@ -12,7 +12,7 @@
 
          <div class="w-full px-6 py-4 bg-white rounded shadow-md ring-1 ring-gray-900/10">
             {{-- HAndle error pas ngisi form --}}
-            @if ($errors->any())
+            {{-- @if ($errors->any())
                <div class="alert alert-error mb-4">
                   <ol>
                      @foreach ($errors->all() as $error)
@@ -20,7 +20,7 @@
                      @endforeach
                   </ol>
                </div>
-            @endif
+            @endif --}}
             <form method="POST" action="{{ route('produk.store') }}" enctype="multipart/form-data">
                @csrf
                <!-- Judul -->
@@ -30,8 +30,12 @@
                   </label>
 
                   <input
-                     class="block w-full mt-1 border-gray-300 rounded-md shadow-sm placeholder:text-gray-400 placeholder:text-right focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                     class="block w-full mt-1 border-gray-300 rounded-md shadow-sm placeholder:text-gray-400 placeholder:text-right focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 {{ $errors->has('title') ? 'border-red-500' : '' }}"
                      type="text" id="title" name="title" placeholder="Product Title" />
+
+                  @if ($errors->has('title'))
+                     <p class="text-red-500 text-xs mt-2">{{ $errors->first('title') }}</p>
+                  @endif
                </div>
 
                <!-- Description -->
@@ -40,30 +44,44 @@
                      Deskripsi Produk
                   </label>
                   <textarea id="desc" name="desc"
-                     class="block w-full mt-1 border-gray-300 rounded-md shadow-sm placeholder:text-gray-400 placeholder:text-right focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                     class="block w-full mt-1 border-gray-300 rounded-md shadow-sm placeholder:text-gray-400 placeholder:text-right focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 {{ $errors->has('desc') ? 'border-red-500' : '' }}"
                      rows="4" placeholder="Product Description"></textarea>
+
+                  @if ($errors->has('desc'))
+                     <p class="text-red-500 text-xs mt-2">{{ $errors->first('desc') }}</p>
+                  @endif
                </div>
 
                <!-- Image -->
                <div class="mt-4">
-                  <label className="form-control w-full max-w-xs">
-                     <div className="label">
-                        <span className="label-text">Pick a file</span>
+                  <label class="form-control w-full max-w-xs">
+                     <div class="label">
+                        <span class="label-text font-bold text-gray-700">Pilih Gambar Produk</span>
                      </div>
                      <input type="file" id="image" name="image"
-                        className="file-input file-input-bordered w-full max-w-xs" />
+                        class="file-input text-white file-input-bordered w-full max-w-xs {{ $errors->has('image') ? 'border-red-500' : '' }}" />
+
+                     @if ($errors->has('image'))
+                        <p class="text-red-500 text-xs mt-2">{{ $errors->first('image') }}</p>
+                     @endif
                   </label>
                </div>
 
                <!-- Price -->
                <div class="mt-4">
-                  <label class="block text-sm font-bold text-gray-700" for="price">
+                  <label class="block text-sm font-bold text-gray-700" for="harga">
                      Harga Produk
                   </label>
                   <input
-                     class="block w-full mt-1 border-gray-300 rounded-md shadow-sm placeholder:text-gray-400 placeholder:text-right focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                     class="block w-full mt-1 border-gray-300 rounded-md shadow-sm placeholder:text-gray-400 placeholder:text-right focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 {{ $errors->has('harga') ? 'border-red-500' : '' }}"
                      type="number" id="harga" name="harga" placeholder="Product Price" />
+
+                  @if ($errors->has('harga'))
+                     <p class="text-red-500 text-xs mt-2">{{ $errors->first('harga') }}</p>
+                  @endif
                </div>
+
+               {{-- Success message --}}
                @if (session('success'))
                   <div class="alert alert-success mt-3">
                      {{ session('success') }}

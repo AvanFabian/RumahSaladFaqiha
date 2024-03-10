@@ -17,42 +17,58 @@
         <!-- Title -->
         <div>
           <label class="block text-sm font-bold text-gray-700" for="title">
-            Title
+              Title
           </label>
-      
+
           <input
-            class="block w-full mt-1 border-gray-300 rounded-md shadow-sm placeholder:text-gray-400 placeholder:text-right focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-            type="text" id="title" name="title"  placeholder="Product Title" value="{{ $produk->title }}" required/>
+              class="block w-full mt-1 border-gray-300 rounded-md shadow-sm placeholder:text-gray-400 placeholder:text-right focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 {{ $errors->has('title') ? 'border-red-500' : '' }}"
+              type="text" id="title" name="title" placeholder="Product Title" value="{{ $produk->title }}" required/>
+
+          @if ($errors->has('title'))
+              <p class="text-red-500 text-xs mt-2">{{ $errors->first('title') }}</p>
+          @endif
         </div>
-      
+
         <!-- Description -->
         <div class="mt-4">
           <label class="block text-sm font-bold text-gray-700" for="desc">
-            Description
+              Description
           </label>
           <textarea id="desc" name="desc"
-            class="block w-full mt-1 border-gray-300 rounded-md shadow-sm placeholder:text-gray-400 placeholder:text-right focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-            rows="4" placeholder="Product Description" required>{{ $produk->desc }}</textarea>
+              class="block w-full mt-1 border-gray-300 rounded-md shadow-sm placeholder:text-gray-400 placeholder:text-right focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 {{ $errors->has('desc') ? 'border-red-500' : '' }}"
+              rows="4" placeholder="Product Description" required>{{ $produk->desc }}</textarea>
+
+          @if ($errors->has('desc'))
+              <p class="text-red-500 text-xs mt-2">{{ $errors->first('desc') }}</p>
+          @endif
         </div>
-      
+
         <!-- Image -->
         <div class="mt-4">
           <label class="block text-sm font-bold text-gray-700" for="image">
-            Image
+              Image
           </label>
           <input
-            class="block w-full mt-1 border-gray-300 rounded-md shadow-sm placeholder:text-gray-400 placeholder:text-right focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-            type="file" id="image" name="image" placeholder="Product Image URL" />
+              class="block w-full mt-1 border-gray-300 rounded-md shadow-sm placeholder:text-gray-400 placeholder:text-right focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 {{ $errors->has('image') ? 'border-red-500' : '' }}"
+              type="file" id="image" name="image" placeholder="Product Image URL" />
+
+          @if ($errors->has('image'))
+              <p class="text-red-500 text-xs mt-2">{{ $errors->first('image') }}</p>
+          @endif
         </div>
-      
+
         <!-- Price -->
         <div class="mt-4">
-          <label class="block text-sm font-bold text-gray-700" for="price">
-            Price
+          <label class="block text-sm font-bold text-gray-700" for="harga">
+              Price
           </label>
           <input
-            class="block w-full mt-1 border-gray-300 rounded-md shadow-sm placeholder:text-gray-400 placeholder:text-right focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-            type="number" id="harga" name="harga" placeholder="Product Price" value="{{ $produk->harga }}" required />
+              class="block w-full mt-1 border-gray-300 rounded-md shadow-sm placeholder:text-gray-400 placeholder:text-right focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 {{ $errors->has('harga') ? 'border-red-500' : '' }}"
+              type="number" id="harga" name="harga" placeholder="Product Price" value="{{ $produk->harga }}" required />
+
+          @if ($errors->has('harga'))
+              <p class="text-red-500 text-xs mt-2">{{ $errors->first('harga') }}</p>
+          @endif
         </div>
       
         <div class="flex items-center justify-start mt-4 gap-x-2">

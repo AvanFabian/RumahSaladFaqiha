@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\Auth\UserAuthController;
 
 /*
@@ -56,11 +57,11 @@ Route::middleware('auth')->group(function () {
     // Review routes (user can only create, edit, and delete their own review)
 });
 
-Route::middleware('auth')->group(function () {
-    // Order routes (user can only view their own order)
-    Route::post('/order', [OrderController::class, 'store'])->name('order.store'); // Checkout
-    Route::get('/order/{id}', [OrderController::class, 'show'])->name('order.show'); // View order
-    Route::delete('/order/{orderId}/product/{productId}', [OrderController::class, 'removeProduct'])->name('order.product.destroy'); // Remove product from order
+// Logika Checkout produk bagi pengguna
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/products', [ProdukController::class, 'chart'])->name('produk.chart');
+    Route::post('/cart', [CartController::class, 'addToCart']);
+    Route::post('/checkout', [OrderController::class, 'submitCheckout']);
 });
 
 require __DIR__.'/auth.php';

@@ -16,16 +16,24 @@ class RegisterAdminControlller extends Controller
 
     public function register(Request $request)
     {
+        $messages = [
+            'username.required' => 'The username field is required.',
+            'username.unique' => 'The username has already been taken.',
+            'password.required' => 'The password field is required.',
+            'password.confirmed' => 'The password confirmation does not match.',
+            'password.min' => 'The password must be at least 8 characters.',
+        ];
+    
         $request->validate([
-            'username' => 'required',
-            'password' => 'required|confirmed',
-        ]);
-
+            'username' => 'required|unique:admins',
+            'password' => 'required|confirmed|min:8',
+        ], $messages);
+    
         Admin::create([
             'username' => $request->username,
             'password' => Hash::make($request->password),
         ]);
-
+    
         return redirect('/admin/login');
     }
 }

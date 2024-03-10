@@ -64,13 +64,18 @@
             </ul>
          </div> --}}
          {{-- Profile User --}}
-         <div class="w-1/2 lg:flex h-full pr-0 lg:justify-end">
-               <div class="text-sm">
-                  <button id="userButton" class="flex items-center focus:outline-none">
-                     <img class="w-8 h-8 rounded-full mr-4" src="http://i.pravatar.cc/300" alt="Avatar of User"> <span
-                        class="hidden md:inline-block">Hi, User </span>
+         <div class="w-1/2 lg:flex flex-row gap-x-3 h-full pr-0 lg:justify-end items-center">
+            @auth('admin')
+               <span class="hidden text-base font-bold text-black md:inline-block">Selamat Datang,
+                  {{ Auth::guard('admin')->user()->username }} </span>
+               <form method="POST" action="{{ route('admin.logout') }}">
+                  @csrf
+                  <button type="submit"
+                     class="inline-block my-auto px-4 py-2 text-xs font-semibold text-white uppercase transition-colors duration-200 transform bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:bg-red-500">
+                     Logout
                   </button>
-               </div>
+               </form>
+            @endauth
          </div>
       </div>
    </nav>
@@ -82,9 +87,9 @@
    {{-- Footer --}}
    <footer class="lg:absolute lg:bottom-0 footer bg-[#f2f2f2] footer-center flex p-3 justify-center text-base-content">
       <aside>
-        <span class="font-bold text-black text-xl ">By Rumah Salad Faqiha | All Rights Reserved</span>
+         <span class="font-bold text-black text-xl ">By Rumah Salad Faqiha | All Rights Reserved</span>
       </aside>
-    </footer>
+   </footer>
    {{-- End Footer --}}
 
 </body>
