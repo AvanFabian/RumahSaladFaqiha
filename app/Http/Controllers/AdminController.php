@@ -12,12 +12,12 @@ class AdminController extends Controller
     public function index()
     {
         $produks = Produk::all(); // semua produk
-        $reviews = Review::all(); // semua review
+        $review = Review::all(); // semua review
         $infotokos = InfoToko::all(); // hanya satu toko
         // blade
         return view('admin.Dashboard', [
             'produk' => $produks,
-            'review' => $reviews,
+            'ulasan' => $review,
             'infotoko' => $infotokos,
         ]);
     }

@@ -25,29 +25,29 @@ class ReviewController extends Controller
 
         Review::create($request->all());
 
-        return redirect()->route('home')
+        return redirect()->route('review.create')
             ->with('success', 'Review created successfully.');
     }
 
 
     // Tampilkan Halaman Edit Review
-    public function edit(Review $review)
+    public function edit(Review $id_review)
     {
         return view('admin.review.Edit', [
-            'review' => $review
+            'review' => $id_review
         ]);
     }
     // Update Review ke Database
-    public function update(Request $request, Review $review)
+    public function update(Request $request, Review $id_review)
     {
         $request->validate([
             'nama' => 'required',
             'komentar' => 'required',
         ]);
 
-        $review->update($request->all());
+        $id_review->update($request->all());
 
-        return redirect()->route('home')
+        return redirect()->route('admin.review.Edit')
             ->with('success', 'Review updated successfully.');
     }
     // Hapus Review dari Database
