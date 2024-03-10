@@ -40,20 +40,20 @@ Route::middleware('admin')->group(function () {
     // Route::get('/produk', [ProdukController::class, 'index'])->name('produk.index');
     Route::get('/produk/create', [ProdukController::class, 'create'])->name('produk.create');
     Route::post('/produk', [ProdukController::class, 'store'])->name('produk.store');
-    Route::get('/produk/{id}', [ProdukController::class, 'show'])->name('produk.show');
-    Route::get('/produk/{id}/edit', [ProdukController::class, 'edit'])->name('produk.edit');
-    Route::put('/produk/{id}', [ProdukController::class, 'update'])->name('produk.update');
-    Route::delete('/produk/{id}', [ProdukController::class, 'destroy'])->name('produk.destroy');
+    Route::get('/produk/{id_produk}/edit', [ProdukController::class, 'edit'])->name('produk.edit');
+    Route::put('/produk/{id_produk}', [ProdukController::class, 'update'])->name('produk.update');
+    Route::delete('/produk/{id_produk}', [ProdukController::class, 'destroy'])->name('produk.destroy');
+    
+    // Review routes
+    Route::get('/review/create', [ReviewController::class, 'create'])->name('review.create');
+    Route::post('/review', [ReviewController::class, 'store'])->name('review.store');
+    Route::get('/review/{id_review}/edit', [ReviewController::class, 'edit'])->name('review.edit');
+    Route::put('/review/{id_review}', [ReviewController::class, 'update'])->name('review.update');
+    Route::delete('/review/{id_review}', [ReviewController::class, 'destroy'])->name('review.destroy');
 });
 
 Route::middleware('auth')->group(function () {
     // Review routes (user can only create, edit, and delete their own review)
-    Route::get('/review/create', [ReviewController::class, 'create'])->name('review.create');
-    Route::post('/review', [ReviewController::class, 'store'])->name('review.store');
-    Route::get('/review/{id}', [ReviewController::class, 'show'])->name('review.show');
-    Route::get('/review/{id}/edit', [ReviewController::class, 'edit'])->name('review.edit');
-    Route::put('/review/{id}', [ReviewController::class, 'update'])->name('review.update');
-    Route::delete('/review/{id}', [ReviewController::class, 'destroy'])->name('review.destroy');
 });
 
 Route::middleware('auth')->group(function () {
