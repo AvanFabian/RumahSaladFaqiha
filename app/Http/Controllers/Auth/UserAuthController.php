@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
 use Exception;
-use Inertia\Inertia;
 use Illuminate\Support\Facades\Session;
 use function Symfony\Component\String\b;
 
@@ -44,7 +43,9 @@ public function handleGoogleCallback()
   
             Auth::login($newUser);
             Session::flash('user', $newUser);
-            return Inertia::location('/');
+            // return Inertia::location('/');
+            // blade
+            return redirect(route('home'));
         }
   
     } catch (Exception $e) {

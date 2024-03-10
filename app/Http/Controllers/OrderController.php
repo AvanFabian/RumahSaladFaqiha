@@ -35,7 +35,7 @@ class OrderController extends Controller
     // Tampilkan Halaman Tambah Order (show method)
     public function show()
     {
-        return Inertia::render('Orders/Create');
+        return view('admin.crud.Create');
     }
 
     // Hapus Order dari Database (removeProduct method)

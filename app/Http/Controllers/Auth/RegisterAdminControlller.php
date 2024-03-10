@@ -6,13 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Inertia\Inertia;
 
 class RegisterAdminControlller extends Controller
 {
     public function showRegistrationForm()
     {
-        return Inertia::render('Admin/Register');
+        return view('admin.register');
     }
 
     public function register(Request $request)
