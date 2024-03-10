@@ -11,21 +11,55 @@ class CartController extends Controller
 
     public function cart()
     {
-        // view chart.blade.php
-        return view('Chart');
+        // Get the current user's cart
+        $cart = Cart::where('user_id', auth()->id())->first();
+        $cartItems = CartItem::where('cart_id', $cart->id)->get();
+        // echo $cartItems;
+        return view('Chart')->with('cartItems', $cartItems);
     }
     public function addToCart(Request $request)
     {
-        // Add item to cart
+        // Find or create a cart for the current user
+        $cart = Cart::firstOrCreate(['user_id' => auth()->id()]);
+
+        // Find or create a cart item for the specified product
+        $cartItem = CartItem::firstOrNew([
+            'cart_id' => $cart->id,
+            'product_id' => $request->product_id,
+        ]);
+
+        // If the cart item is new, set the quantity to 1
+        if ($cartItem->quantity == null) {
+            $cartItem->quantity = 1;
+        } else {
+            // Otherwise, increment the quantity of the cart item
+            $cartItem->increment('quantity');
+        }
+
+        // Save the cart item
+        $cartItem->save();
+
+        return redirect()->back()->with('success', 'Product added to cart successfully');
     }
 
-    public function removeFromCart(Request $request)
+    // Update the quantity of a cart item
+    public function updateQuantity($id, Request $request)
     {
-        // Remove item from cart
+        $cartItem = CartItem::find($id);
+        $cartItem->quantity = $request->quantity;
+        $cartItem->save();
+    
+        return response()->json(['success' => true]);
     }
 
-    public function updateQuantity(Request $request)
+    // Remove item from cart
+    public function removeFromCart($id)
     {
-        // Update quantity of item in cart
+        $cartItem = CartItem::find($id);
+        $cartItem->delete();
+    
+        return response()->json(['success' => true]);
     }
+
+
 }

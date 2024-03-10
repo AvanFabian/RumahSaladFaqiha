@@ -75,6 +75,21 @@
          </a>
       </div> --}}
 
+      {{-- success message --}}
+      @if (session('success'))
+         <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+            <strong class="font-bold">Success!</strong>
+            <span class="block sm:inline">{{ session('success') }}</span>
+            <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+               <svg onclick="this.parentElement.style.display='none'" class="fill-current h-6 w-6 text-green-500"
+                  role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                  <title>Close</title>
+                  <path
+                     d="M14.348 14.849a1 1 0 01-1.497 1.316l-3.851-4.103-3.849 4.103a1 1 0 01-1.497-1.316l3.849-4.103-3.849-4.103a1 1 0 111.497-1.316l3.849 4.103 3.851-4.103a1 1 0 111.497 1.316l-3.851 4.103 3.851 4.103a1 1 0 010 1.532z" />
+               </svg>
+            </span>
+         </div>
+      @endif
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-y-8 lg:gap-y-24">
          @foreach ($menusalad as $salad)
             <div class="flex rounded-xl mx-auto w-full lg:w-[320px] pb-8 border-[5px] border-[#8d334e71] drop-shadow-xl">
@@ -83,10 +98,13 @@
                   <h3 class="text-base text-[#57375D] font-bold capitalize">{{ $salad->title }}</h3>
                   <h3 class="text-base text-[#57375D] font-bold capitalize">{{ $salad->desc }}</h3>
                   <span class="text-xl text-[#57375D]">Rp {{ $salad->harga }},-</span>
-                  <a href="#"
-                     class="btn rounded-[30px]  text-white bg-[#D14D72] hover:bg-[#d14d72ce] lg:w-26 lg:mx-auto">
-                     Tambah ke Keranjang
-                  </a>
+                  <form action="{{ route('cart.add') }}" method="POST">
+                     @csrf
+                     <input type="hidden" name="product_id" value="{{ $salad->id }}">
+                     <button type="submit" class="btn rounded-[30px]  text-white bg-[#D14D72] hover:bg-[#d14d72ce] lg:w-26 lg:mx-auto">
+                         Tambah ke Keranjang
+                     </button>
+                 </form>
                </div>
             </div>
          @endforeach

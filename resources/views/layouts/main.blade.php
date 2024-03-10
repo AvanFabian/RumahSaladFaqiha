@@ -56,14 +56,20 @@
             </div>
          </div>
       </nav>
-   
+
       {{-- {/* icon navbar untuk screen dekstop */} --}}
       <div class="hidden lg:flex lg:flex-row lg:gap-11">
-   
+
          <div class="my-auto">
-            <a href="{{ route('chart') }}" target="_blank">Chart</a>
+            <a href="{{ route('chart') }}" target="_blank">
+               <svg class="w-[32px] h-[32px] text-gray-800 dark:text-white" aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                     d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.3L19 7H7.3" />
+               </svg>
+            </a>
          </div>
-   
+
          @auth
             <form action="{{ route('auth.google.logout') }}" method="POST">
                @csrf
@@ -73,7 +79,7 @@
                </button>
             </form>
          @endauth
-   
+
          @guest
             <a class="btn uppercase font-bold lg:px-7 text-[#F8F4EC] bg-[#FF3FA4] hover:bg-[#ff61b5] rounded-2xl"
                href="{{ route('auth.google.login') }}">
@@ -92,9 +98,9 @@
    {{-- Footer --}}
    <footer class="footer footer-center flex p-7 justify-center bg-[#F8F4EC] text-base-content">
       <aside>
-        <span class="text-[#8D334E] text-xl ">By Rumah Salad Faqiha | All Rights Reserved</span>
+         <span class="text-[#8D334E] text-xl ">By Rumah Salad Faqiha | All Rights Reserved</span>
       </aside>
-    </footer>
+   </footer>
    {{-- End Footer --}}
 </body>
 
