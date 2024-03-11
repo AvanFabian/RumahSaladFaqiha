@@ -100,11 +100,11 @@
          </div>
       @endif
       <div class="grid grid-cols-2 lg:grid-cols-3 gap-y-8 lg:gap-y-24">
-         @if (!$menusalad->isEmpty())
+         @if ($menusalad->isEmpty())
             <div class="hidden lg:flex rounded-xl mx-auto w-full lg:w-[320px] pb-8 drop-shadow-xl">
             </div>
-            <div class="flex rounded-xl mx-auto w-full ml-52 mt-16 lg:my-12 lg:w-[320px] pb-8 drop-shadow-xl">
-               <div class="w-full flex flex-col gap-y-3 mx-auto text-center">
+            <div class="flex rounded-xl mx-auto w-full ml-52 mt-16 text-center lg:ml-0 lg:mt12 lg:mb-12 lg:w-[320px] pb-8 drop-shadow-xl">
+               <div class="w-full flex flex-col gap-y-3 mx-auto ">
                   <h3 class="text-3xl text-[#57375D] font-bold capitalize">Maaf, Belum ada menu tersedia</h3>
                </div>
             </div>

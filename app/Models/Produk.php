@@ -13,6 +13,7 @@ class Produk extends Model
         'desc',
         'image',
         'harga',
+        'kategori',
     ];
 }
 // one to one of opsi produk (un-comment kalo dibutuhkan)

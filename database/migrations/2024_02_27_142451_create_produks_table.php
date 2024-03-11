@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('desc');
             $table->string('image');
             $table->integer('harga');
+            $table->string('kategori');
             $table->timestamps();
         });
     }

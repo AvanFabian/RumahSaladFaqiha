@@ -27,9 +27,9 @@ class LoginAdminControlller extends Controller
         ], $messages);
 
         $credentials = $request->only('username', 'password');
-
+        
         if (Auth::guard('admin')->attempt($credentials)) {
-            return redirect()->intended('/admin/dashboard');
+            return redirect('/admin/dashboard');
         }
 
         return back()->withErrors([

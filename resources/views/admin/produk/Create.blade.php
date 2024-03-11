@@ -81,6 +81,22 @@
                   @endif
                </div>
 
+               <!-- Kategori -->
+               <div class="mt-4">
+                  <label class="block text-sm font-bold text-gray-700" for="harga">
+                     Kategori Produk
+                  </label>
+                  <select class="select select-bordered w-full max-w-xs">
+                     <option disabled selected>Kategori Produk</option>
+                     <option value="menusalad">Menu Salad</option>
+                     <option value="menulain">Menu Lain</option>
+                   </select>
+
+                  @if ($errors->has('harga'))
+                     <p class="text-red-500 text-xs mt-2">{{ $errors->first('harga') }}</p>
+                  @endif
+               </div>
+
                {{-- Success message --}}
                @if (session('success'))
                   <div class="alert alert-success mt-3">

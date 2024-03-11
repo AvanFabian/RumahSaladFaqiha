@@ -24,6 +24,7 @@ class ProdukController extends Controller
             'image.image' => 'The image must be an image file.',
             'harga.required' => 'The price field is required.',
             'harga.numeric' => 'The price must be a number.',
+            'kategori.required' => 'The category field is required.',
         ];
     
         $request->validate([
@@ -31,6 +32,7 @@ class ProdukController extends Controller
             'desc' => 'required',
             'image' => 'required|image',
             'harga' => 'required|numeric',
+            'kategori' => 'required',
         ], $messages);
     
         $imagePath = $request->file('image')->store('uploads', 'public');
@@ -40,6 +42,7 @@ class ProdukController extends Controller
             'desc' => $request->desc,
             'image' => $imagePath,
             'harga' => $request->harga,
+            'kategori' => $request->kategori,
         ]);
     
         return redirect()->route('produk.create') 
@@ -70,6 +73,7 @@ class ProdukController extends Controller
             'image.image' => 'The image must be an image file.',
             'harga.required' => 'The price field is required.',
             'harga.numeric' => 'The price must be a number.',
+            'kategori.required' => 'The category field is required.',
         ];
     
         $request->validate([
@@ -77,6 +81,7 @@ class ProdukController extends Controller
             'desc' => 'required',
             'image' => 'required|image',
             'harga' => 'required|numeric',
+            'kategori' => 'required',
         ], $messages);
     
         $imagePath = $request->file('image')->store('uploads', 'public');
@@ -86,6 +91,7 @@ class ProdukController extends Controller
             'desc' => $request->desc,
             'image' => $imagePath,
             'harga' => $request->harga,
+            'kategori' => $request->kategori,
         ]);
     
         return redirect()->route('admin.dashboard')
