@@ -25,24 +25,23 @@
       {{-- {/* margin atas bawah */} --}}
       <div class="w-full text-center my-16">
          <h1 class="text-7xl capitalize font-bold">
-            <span class="text-[#8D334E] drop-shadow-xl">Tentang </span>
+            <span class="text-[#8D334E] drop-shadow-xl">Tentang</span>
             <span class="text-[#ffababc7]">Kami</span>
          </h1>
       </div>
 
-      <div class="flex flex-col lg:flex-row gap-y-12 lg:gap-x-4 rounded-custom60 bg-[#fcc8d147]">
-         <div class="flex relative">
+      {{-- dekstop --}}
+      <div class="hidden lg:flex flex-col lg:flex-row gap-y-12 lg:gap-x-4 rounded-custom60 bg-[#fcc8d147]">
+         <div class="basis-1/2 flex relative">
             <img src="{{ asset('assets/images/about-img.jpeg') }}" alt=""
-               class="rounded-2xl lg:h-[360px] lg:w-[630px] opacity-0" />
-            <img src="{{ asset('assets/images/about-img.jpeg') }}" alt=""
-               class="lg:absolute lg:-top-7 left-0 rounded-2xl lg:h-[410px] lg:w-[570px] rounded-custom60" />
+               class="lg:absolute lg:-top-4 left-0 rounded-2xl lg:h-[450px] lg:w-[570px] rounded-custom60" />
          </div>
 
-         <div class="basis-1/2 flex flex-col gap-y-6">
+         <div class="basis-1/2 flex flex-col min-h-[410px] gap-y-6">
             <div class="flex flex-col w-full my-auto gap-y-9">
                <h3 class="text-6xl font-bold text-[#8D334E] drop-shadow-xl">Mengapa Salad Kami Istimewa?</h3>
                <div class="flex lg:w-[590px]">
-                  <p>
+                  <p class="font-semibold text-base text-[#57375D]">
                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
                      Voluptatibus qui ea ullam, enim tempora ipsum fuga alias quae
                      ratione a officiis id temporibus autem? Quod nemo facilis
@@ -52,6 +51,26 @@
             </div>
          </div>
       </div>
+      {{-- mobile --}}
+      <div class="lg:hidden flex flex-col gap-y-8 gap-x-4 rounded-custom60 bg-[#fcc8d147]">
+         <div class="flex relative">
+            {{-- <img src="{{ asset('assets/images/about-img.jpeg') }}" alt=""
+               class="rounded-2xl lg:h-[360px] lg:w-[630px] opacity-0" /> --}}
+            <img src="{{ asset('assets/images/about-img.jpeg') }}" alt=""
+               class="rounded-2xl w-full h-[275px] rounded-custom60" />
+         </div>
+
+         <div class="flex flex-col h-fit gap-y-6 mb-16">
+            <div class="flex flex-col w-full text-center my-auto gap-y-9">
+               <h3 class="text-6xl font-bold text-[#8D334E] drop-shadow-xl">Mengapa Salad Kami Istimewa?</h3>
+                  <p class="font-semibold text-base mx-auto w-3/4 text-[#57375D]">
+                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                     Voluptatibus qui ea ullam, enim tempora ipsum fuga alias quae
+                     ratione a officiis id temporibus autem? Quod nemo facilis
+                     cupiditate. Ex, vel?
+                  </p>
+            </div>
+         </div>
       </div>
    </section>
 
@@ -90,7 +109,7 @@
             </span>
          </div>
       @endif
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-y-8 lg:gap-y-24">
+      <div class="grid grid-cols-2 lg:grid-cols-3 gap-y-8 lg:gap-y-24">
          @foreach ($menusalad as $salad)
             <div class="flex rounded-xl mx-auto w-full lg:w-[320px] pb-8 border-[5px] border-[#8d334e71] drop-shadow-xl">
                <div class="w-full flex flex-col gap-y-3 mx-auto text-center">

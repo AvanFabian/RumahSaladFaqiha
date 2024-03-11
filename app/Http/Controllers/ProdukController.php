@@ -7,16 +7,6 @@ use Illuminate\Http\Request;
 
 class ProdukController extends Controller
 {
-
-    // method kalo dibutuhkan:
-    // 'nama_opsi' => 'required', // validate the product option field
-    // OpsiProduk::create([
-    //     'nama_opsi' => $request->nama_opsi,
-    //     'id_produk' => $produk->id,
-    // ]);
-
-    
-
     // Tampilkan Halaman Tambah Produk
     public function create()
     {

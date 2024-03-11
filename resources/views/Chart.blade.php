@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.main', ['isChart' => true])
 @section('title', 'Chart')
 
 @section('content')
@@ -19,7 +19,7 @@
                   <path
                      d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
                </svg>
-               <input type="text" class="grow border-none" placeholder="Email" name="email" />
+               <input type="text" class="grow border-none font-bold text-[#2d2d2db8]" name="email" value="{{ $user->email }}" disabled/>
             </label>
             <label class="input bg-[#8d334e31] flex items-center gap-2">
                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="" class="w-4 h-4 opacity-70">
@@ -28,7 +28,7 @@
                   <path
                      d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
                </svg>
-               <input type="text" class="grow border-none" placeholder="Nama" name="nama" />
+               <input type="text" class="grow border-none font-bold text-[#2d2d2db8]" name="nama" value="{{ $user->name }}" disabled />
             </label>
             <label class="input bg-[#8d334e31] flex items-center gap-2" for="telp">
                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="" class="w-4 h-4 opacity-70">
@@ -92,7 +92,7 @@
                            </svg>
                         </button>
                         {{-- Jumlah Produk --}}
-                        <div class="quantity mx-auto border-2 border-[#8d334e] px-4">
+                        <div class="quantity mx-auto border-2 border-[#8d334e] px-4" data-price="{{ $product->harga }}">
                            {{ $item->quantity }}</div>
                         {{-- Tombol Tambah Jumlah Produk --}}
                         <button class="add">
@@ -111,6 +111,7 @@
                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                            </svg>
+                        </button>
                      </div>
                      </a>
                   </div>
@@ -134,13 +135,14 @@
                   @endforeach
                   <h2 class="text-2xl font-semibold text-black lg:basis-1/2">Total</h2>
                   <h2 class="text-2xl font-semibold text-black lg:basis-1/4">Rp</h2>
-                  <h2 class="text-2xl font-semibold text-black lg:basis-1/4">Rp {{ $totalPrice }}</h2>
+                  <h2 class="total-price text-2xl font-semibold text-black lg:basis-1/4 ">Rp {{ $totalPrice }}</h2>
                </div>
             </div>
          </div>
       </div>
    </section>
    <script>
+      // menghapus item dari keranjang
       document.querySelectorAll('.remove').forEach(function(button, index) {
          button.addEventListener('click', function() {
             fetch('/cart-items/{{ $item->id }}', {
@@ -158,19 +160,21 @@
          });
       });
 
+      // Mengurangi jumlah item di keranjang
       document.querySelectorAll('.substract').forEach(function(button, index) {
          button.addEventListener('click', function() {
             console.log('substract');
             updateQuantity(index, -1);
          });
       });
-
+      // Menambah jumlah item di keranjang
       document.querySelectorAll('.add').forEach(function(button, index) {
          button.addEventListener('click', function() {
             updateQuantity(index, 1);
          });
       });
 
+      // Mengupdate jumlah item di keranjang
       function updateQuantity(index, change) {
          var quantityElements = document.querySelectorAll('.quantity');
          var newQuantity = parseInt(quantityElements[index].textContent) + change;
@@ -180,6 +184,13 @@
          }
 
          quantityElements[index].textContent = newQuantity;
+
+         // menyesuaikan total harga
+         // Update the total price
+         var price = parseInt(quantityElements[index].dataset.price);
+         var totalPriceElement = document.querySelector('.total-price');
+         var totalPrice = parseInt(totalPriceElement.textContent.replace('Rp ', '')) + price * change;
+         totalPriceElement.textContent = 'Rp ' + totalPrice;
 
          fetch('/cart-items/{{ $item->id }}/quantity', {
             method: 'POST',

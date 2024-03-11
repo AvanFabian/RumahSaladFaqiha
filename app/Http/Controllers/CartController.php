@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\CartItem;
-
+use Illuminate\Support\Facades\Auth;
 class CartController extends Controller
 {
 
@@ -15,7 +15,11 @@ class CartController extends Controller
         $cart = Cart::where('user_id', auth()->id())->first();
         $cartItems = CartItem::where('cart_id', $cart->id)->get();
         // echo $cartItems;
-        return view('Chart')->with('cartItems', $cartItems);
+        $user = Auth::user(); // Get the currently authenticated user
+        return view('Chart')->with([
+            'cartItems' => $cartItems,
+            'user' => $user
+        ]);
     }
     public function addToCart(Request $request)
     {
