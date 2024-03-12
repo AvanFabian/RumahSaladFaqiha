@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Nota;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Produk extends Model
 {
@@ -15,10 +16,8 @@ class Produk extends Model
         'harga',
         'kategori',
     ];
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class)->withPivot('quantity');
+    }
 }
-// one to one of opsi produk (un-comment kalo dibutuhkan)
-// public function opsiProduk()
-// {
-//     // id is the name of the column in the produks table that is used to establish the relationship with the opsi_produks table. This column contains the ID of the product.
-//     return $this->hasMany(OpsiProduk::class, 'id_produk', 'id');
-// }

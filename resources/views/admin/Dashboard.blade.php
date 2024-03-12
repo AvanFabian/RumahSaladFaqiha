@@ -252,12 +252,13 @@
                         <th
                            class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
                            Jenis Produk Dipesan</th>
-                        <th class="px-6 py-3 text-sm text-left text-gray-500 border-b border-gray-200 bg-gray-50"
-                           colspan="3">
+                        <th
+                           class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                           Status</th>
+                        <th class="px-6 py-3 text-sm text-left text-gray-500 border-b border-gray-200 bg-gray-50">
                            Total Harga</th>
-                        <th class="px-6 py-3 text-sm text-left text-gray-500 border-b border-gray-200 bg-gray-50"
-                           colspan="3">
-                           Status Pesanan</th>
+                        <th class="px-6 py-3 text-sm text-left text-gray-500 border-b border-gray-200 bg-gray-50">
+                           Aksi</th>
                      </tr>
                   </thead>
 
@@ -295,10 +296,13 @@
                                  class="text-sm font-medium leading-5 text-center whitespace-no-wrap border-b border-gray-200 ">
                                  {{ $order->alamat }}
                               </td>
-                              <td
-                                 class="text-sm font-medium leading-5 text-center whitespace-no-wrap border-b border-gray-200 ">
-                                 {{ $order->produk->title }}
-                              </td>
+                              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                 @foreach ($order->products as $product)
+                                     {{ $product->name }}
+                                 @endforeach 
+                                 {{-- Debugging --}}
+                                 {{ dd($order->products) }}
+                             </td>
 
                               <td
                                  class="text-sm font-medium leading-5 text-center whitespace-no-wrap border-b border-gray-200 ">
@@ -306,12 +310,12 @@
                               </td>
 
                               </td>
-                              <td class="text-sm font-medium leading-5 whitespace-no-wrap border-b border-gray-200 ">
-                                 {{ $order->total_price * $order->quantity }}
-                              </td>
+                              <td class="text-sm font-medium leading-5 text-center whitespace-no-wrap border-b border-gray-200 ">
+                                 {{ $order->total_price }}
+                               </td>
                               <td>
                                  @if ($order->status != 'done')
-                                    <a href="{{ route('admin.markOrderDone', $order->id) }}">Mark as Done</a>
+                                    <a href="{{ route('markorder.done', $order->id) }}">Mark as Done</a>
                                  @else
                                     <p>Done</p>
                                  @endif

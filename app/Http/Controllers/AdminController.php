@@ -15,7 +15,8 @@ class AdminController extends Controller
         $produks = Produk::all(); // semua produk
         $review = Review::all(); // semua review
         $infotokos = InfoToko::all(); // hanya satu toko
-        $orders = Order::all();
+        $orders = Order::with('products')->get();
+        // dd($orders);
         // blade
         return view('admin.Dashboard', [
             'produk' => $produks,

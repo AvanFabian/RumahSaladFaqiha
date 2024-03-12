@@ -64,8 +64,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/cart-items/{id}/quantity', [CartController::class, 'updateQuantity'])->name('cart.update');
     Route::post('/checkout', [OrderController::class, 'submitCheckout'])->name('checkout.submit');
     Route::delete('/cart-items/{id}', [CartController::class, 'removeFromCart'])->name('cart.remove');
+    // order success page
+    Route::get('/order/success', [OrderController::class, 'orderSuccess'])->name('order.success');
     // mark order as done
-    Route::post('/order/{orderId}/done', [OrderController::class, 'markOrderDone'])->name('order.done');
+    Route::post('/order/{orderId}/done', [OrderController::class, 'markOrderDone'])->name('markorder.done');
 });
 
 require __DIR__.'/auth.php';

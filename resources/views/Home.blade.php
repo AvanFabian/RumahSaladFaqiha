@@ -205,17 +205,18 @@
             <div class="hidden lg:flex rounded-xl w-full lg:w-[320px] pb-8 drop-shadow-xl">
             </div>
          @else
+         @foreach ($reviews as $review)
             <div
                class="flex mx-auto px-4 py-6 lg:w-[320px] lg:px-8 lg:py-[48px] bg-[#fcc8d165] rounded lg:rounded-custom60">
                <div class="flex flex-col lg:gap-y-5 mx-auto text-center">
                   <img src="{{ asset('assets/images/quote-img.png') }}" alt="" class="lg:w-16 mx-auto" />
                   <p class="text-[#8D334E] text-xl mt-7 mb-7 font-semibold">
-                     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
-                     nulla sit libero nemo fuga sequi nobis? Necessitatibus aut"
+                     {{ $review->komentar }}
                   </p>
-                  <h3 class="text-2xl font-bold text-[#8D334E]">- Bu Dhia</h3>
+                  <h3 class="text-2xl font-bold text-[#8D334E]">- {{ $review->nama }}</h3>
                </div>
             </div>
+         @endforeach
          @endif
       </div>
    </section>

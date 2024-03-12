@@ -14,15 +14,17 @@ class CartController extends Controller
 
     public function cart()
     {
-        // Get the current user's cart
-        $cart = Cart::where('user_id', auth()->id())->first();
-        $cartItems = CartItem::where('cart_id', $cart->id)->get();
-        // echo $cartItems;
-        $user = Auth::user(); // Get the currently authenticated user
-        return view('Chart')->with([
-            'cartItems' => $cartItems,
-            'user' => $user
-        ]);
+    // Get the current user's cart
+    $cart = Cart::where('user_id', auth()->id())->first();
+    $cartItems = CartItem::where('cart_id', $cart->id)->get();
+    // dd($cartItems);
+    $user = Auth::user(); // Get the currently authenticated user
+
+    return view('Chart')->with([
+        'cart' => $cart,
+        'cartItems' => $cartItems,
+        'user' => $user
+    ]);
     }
     public function addToCart(Request $request)
     {
