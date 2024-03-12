@@ -99,16 +99,17 @@
             </span>
          </div>
       @endif
-      <div class="grid grid-cols-2 lg:grid-cols-3 gap-y-8 lg:gap-y-24">
+      <div class="grid grid-cols-2 lg:grid-cols-3 place-items-center gap-y-8 lg:gap-y-24">
          @if ($menusalad->isEmpty())
-            <div class="hidden lg:flex rounded-xl mx-auto w-full lg:w-[320px] pb-8 drop-shadow-xl">
+            <div class="hidden lg:flex rounded-xl w-full lg:w-[320px] pb-8 drop-shadow-xl">
             </div>
-            <div class="flex rounded-xl mx-auto w-full ml-52 mt-16 text-center lg:ml-0 lg:mt12 lg:mb-12 lg:w-[320px] pb-8 drop-shadow-xl">
-               <div class="w-full flex flex-col gap-y-3 mx-auto ">
+            <div
+               class="flex rounded-xl w-full ml-52 mt-16 text-center lg:ml-0 lg:mt12 lg:mb-12 lg:w-[320px] pb-8 drop-shadow-xl">
+               <div class="w-full flex flex-col gap-y-3 ">
                   <h3 class="text-3xl text-[#57375D] font-bold capitalize">Maaf, Belum ada menu tersedia</h3>
                </div>
             </div>
-            <div class="hidden lg:flex rounded-xl mx-auto w-full lg:w-[320px] pb-8 drop-shadow-xl">
+            <div class="hidden lg:flex rounded-xl w-full lg:w-[320px] pb-8 drop-shadow-xl">
             </div>
          @else
             @foreach ($menusalad as $salad)
@@ -145,18 +146,40 @@
          </h1>
       </div>
 
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-y-8 lg:gap-y-24">
-         <div class="flex rounded-xl mx-auto w-full lg:w-[320px] pb-8 border-[5px] border-[#8d334e71] drop-shadow-xl">
-            <div class="w-full flex flex-col gap-y-3 mx-auto text-center">
-               <img src="{{ asset('assets/images/blog-1.jpeg') }}" alt="" class="w-full h-[155px] lg:mx-auto" />
-               <h3 class="text-base text-[#57375D] font-bold capitalize">tasty and healty</h3>
-               <span class="text-xl text-[#57375D]">Rp 8.500,-</span>
-               <a href="#"
-                  class="btn rounded-[30px]  text-white bg-[#D14D72] hover:bg-[#d14d72ce] lg:w-26 lg:mx-auto">
-                  Tambah ke Keranjang
-               </a>
+      <div class="grid grid-cols-2 lg:grid-cols-3 place-items-center gap-y-8 lg:gap-y-24">
+         @if ($menulain->isEmpty())
+            <div class="hidden lg:flex rounded-xl w-full lg:w-[320px] pb-8 drop-shadow-xl">
             </div>
-         </div>
+            <div
+               class="flex rounded-xl w-full ml-52 mt-16 text-center lg:ml-0 lg:mt12 lg:mb-12 lg:w-[320px] pb-8 drop-shadow-xl">
+               <div class="w-full flex flex-col gap-y-3 ">
+                  <h3 class="text-3xl text-[#57375D] font-bold capitalize">Maaf, Belum ada Menu Ditambahkan</h3>
+               </div>
+            </div>
+            <div class="hidden lg:flex rounded-xl w-full lg:w-[320px] pb-8 drop-shadow-xl">
+            </div>
+         @else
+            @foreach ($menulain as $lain)
+               <div
+                  class="flex rounded-xl mx-auto w-full lg:w-[320px] pb-8 border-[5px] border-[#8d334e71] drop-shadow-xl">
+                  <div class="w-full flex flex-col gap-y-3 mx-auto text-center">
+                     <img src="{{ asset('storage/' . $lain->image) }}" alt=""
+                        class="w-full h-[155px] lg:mx-auto" />
+                     <h3 class="text-base text-[#57375D] font-bold capitalize">{{ $lain->title }}</h3>
+                     <h3 class="text-base text-[#57375D] font-bold capitalize">{{ $lain->desc }}</h3>
+                     <span class="text-xl text-[#57375D]">Rp {{ $lain->harga }},-</span>
+                     <form action="{{ route('cart.add') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="product_id" value="{{ $lain->id }}">
+                        <button type="submit"
+                           class="btn rounded-[30px]  text-white bg-[#D14D72] hover:bg-[#d14d72ce] lg:w-26 lg:mx-auto">
+                           Tambah ke Keranjang
+                        </button>
+                     </form>
+                  </div>
+               </div>
+            @endforeach
+         @endif
       </div>
    </section>
 
@@ -169,17 +192,31 @@
          </h1>
       </div>
 
-      <div class="grid grid-cols-2 lg:grid-cols-3 gap-y-8 lg:gap-y-24">
-         <div class="flex mx-auto px-4 py-6 lg:w-[320px] lg:px-8 lg:py-[48px] bg-[#fcc8d165] rounded lg:rounded-custom60">
-            <div class="flex flex-col lg:gap-y-5 mx-auto text-center">
-               <img src="{{ asset('assets/images/quote-img.png') }}" alt="" class="lg:w-16 mx-auto" />
-               <p class="text-[#8D334E] text-xl mt-7 mb-7 font-semibold">
-                  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
-                  nulla sit libero nemo fuga sequi nobis? Necessitatibus aut"
-               </p>
-               <h3 class="text-2xl font-bold text-[#8D334E]">- Bu Dhia</h3>
+      <div class="grid grid-cols-2 lg:grid-cols-3 place-items-center gap-y-8 lg:gap-y-24">
+         @if ($reviews->isEmpty())
+            <div class="hidden lg:flex rounded-xl w-full lg:w-[320px] pb-8 drop-shadow-xl">
             </div>
-         </div>
+            <div
+               class="flex rounded-xl w-full ml-52 mt-16 text-center lg:ml-0 lg:mt12 lg:mb-12 lg:w-[320px] pb-8 drop-shadow-xl">
+               <div class="w-full flex flex-col gap-y-3 ">
+                  <h3 class="text-3xl text-[#57375D] font-bold capitalize">Maaf, Belum ada Ulasan Ditambahkan</h3>
+               </div>
+            </div>
+            <div class="hidden lg:flex rounded-xl w-full lg:w-[320px] pb-8 drop-shadow-xl">
+            </div>
+         @else
+            <div
+               class="flex mx-auto px-4 py-6 lg:w-[320px] lg:px-8 lg:py-[48px] bg-[#fcc8d165] rounded lg:rounded-custom60">
+               <div class="flex flex-col lg:gap-y-5 mx-auto text-center">
+                  <img src="{{ asset('assets/images/quote-img.png') }}" alt="" class="lg:w-16 mx-auto" />
+                  <p class="text-[#8D334E] text-xl mt-7 mb-7 font-semibold">
+                     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
+                     nulla sit libero nemo fuga sequi nobis? Necessitatibus aut"
+                  </p>
+                  <h3 class="text-2xl font-bold text-[#8D334E]">- Bu Dhia</h3>
+               </div>
+            </div>
+         @endif
       </div>
    </section>
 

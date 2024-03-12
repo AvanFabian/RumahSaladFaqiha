@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\CartItem;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Order;
+use Illuminate\Support\Facades\Storage;
+
 class CartController extends Controller
 {
 
@@ -56,6 +59,7 @@ class CartController extends Controller
         return response()->json(['success' => true]);
     }
 
+
     // Remove item from cart
     public function removeFromCart($id)
     {
@@ -64,6 +68,7 @@ class CartController extends Controller
     
         return response()->json(['success' => true]);
     }
+
 
 
 }

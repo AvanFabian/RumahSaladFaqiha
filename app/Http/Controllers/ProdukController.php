@@ -22,6 +22,8 @@ class ProdukController extends Controller
             'desc.required' => 'The description field is required.',
             'image.required' => 'The image field is required.',
             'image.image' => 'The image must be an image file.',
+            'image.max' => 'The image must be less than 2MB.',
+            'image.mimes' => 'The image must be a file of type: jpeg, png, svg.',
             'harga.required' => 'The price field is required.',
             'harga.numeric' => 'The price must be a number.',
             'kategori.required' => 'The category field is required.',
@@ -30,7 +32,7 @@ class ProdukController extends Controller
         $request->validate([
             'title' => 'required|max:255',
             'desc' => 'required',
-            'image' => 'required|image',
+            'image' => 'required|file|max:2048|mimes:jpeg,png,svg', // max 2048KB or 2MB
             'harga' => 'required|numeric',
             'kategori' => 'required',
         ], $messages);
@@ -71,6 +73,8 @@ class ProdukController extends Controller
             'desc.required' => 'The description field is required.',
             'image.required' => 'The image field is required.',
             'image.image' => 'The image must be an image file.',
+            'image.max' => 'The image must be less than 2MB.',
+            'image.mimes' => 'The image must be a file of type: jpeg, png, svg.',
             'harga.required' => 'The price field is required.',
             'harga.numeric' => 'The price must be a number.',
             'kategori.required' => 'The category field is required.',
@@ -79,7 +83,7 @@ class ProdukController extends Controller
         $request->validate([
             'title' => 'required|max:255',
             'desc' => 'required',
-            'image' => 'required|image',
+            'image' => 'required|file|max:2048|mimes:jpeg,png,svg', // max 2048KB or 2MB
             'harga' => 'required|numeric',
             'kategori' => 'required',
         ], $messages);

@@ -11,7 +11,9 @@
       </div>
       <div class="w-full flex lg:flex-row lg:gap-x-8">
          {{-- Sisi Kiri: Form Data Diri  --}}
-         <div class="w-full lg:flex lg:flex-col lg:basis-1/2 lg:gap-y-4">
+         <div class="lg:basis-1/2 ">
+            <form action="{{ route('checkout.submit') }}" method="POST" class="w-full lg:flex lg:flex-col lg:gap-y-4">
+               @csrf
             <label class="input  bg-[#8d334e31] flex items-center gap-2">
                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="" class="w-4 h-4 opacity-70">
                   <path
@@ -37,7 +39,7 @@
                   <path
                      d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
                </svg>
-               <input type="tel" class="grow border-none" name="telp" placeholder="No.telepon" />
+               <input type="text" class="grow border-none" name="telp" placeholder="No.telepon" />
             </label>
             <label class="input bg-[#8d334e31] flex items-center gap-2">
                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="" class="w-4 h-4 opacity-70">
@@ -61,7 +63,8 @@
                <input type="file" id="fileInput" name="buktitransfer" class="hidden" />
             </label>
             <textarea class="textarea textarea-bordered bg-[#8d334e31]" placeholder="Catatan" name="catatan"></textarea>
-            <button class="btn bg-[#D14D72] text-white lg:w-[160px] lg:mx-auto lg:mt-4">Submit</button>
+            <button type="submit" class="btn bg-[#D14D72] text-white lg:w-[160px] lg:mx-auto lg:mt-4">Submit</button>
+         </form>
          </div>
          {{-- Sisi Kanan: Tagihan Pembayaran + List Produk  --}}
          <div class="w-full lg:flex lg:flex-col lg:basis-1/2 lg:gap-y-4">

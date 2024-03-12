@@ -14,9 +14,14 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
+            $table->string('email');
+            $table->string('username');
+            $table->string('telp');
+            $table->string('alamat');
+            $table->string('buktitransfer');
+            $table->string('status')->default('pending');
+            $table->string('catatan');
             $table->integer('total_price');
-            $table->string('address');
-            $table->string('status');
             $table->timestamps();
         });
     }
