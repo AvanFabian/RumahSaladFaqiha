@@ -55,7 +55,7 @@ class OrderController extends Controller
     
         // Attach the cart items to the order
         foreach ($cart->items as $item) {
-            $order->products()->attach($item->produk_id, ['quantity' => $item->quantity]);
+            $order->products()->attach($item->product_id, ['quantity' => $item->quantity]);
         }
     
         // Delete the user's cart items

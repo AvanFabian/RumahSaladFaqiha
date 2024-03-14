@@ -301,7 +301,7 @@
                                      {{ $product->name }}
                                  @endforeach 
                                  {{-- Debugging --}}
-                                 {{ dd($order->products) }}
+                                 {{-- {{ dd($order->products) }} --}}
                              </td>
 
                               <td
