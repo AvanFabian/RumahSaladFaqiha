@@ -114,6 +114,13 @@
                         </tr>
                      @endforelse
                   </tbody>
+                  <tfoot>
+                     <tr>
+                        <td colspan="5" class="p-5 text-center">
+                           {{ $produk->links('vendor.pagination.custom') }}
+                        </td>
+                     </tr>
+                  </tfoot>
                </table>
             </div>
          </div>
@@ -214,6 +221,7 @@
                         </tr>
                      @endforelse
                   </tbody>
+                  
                </table>
             </div>
          </div>
@@ -237,6 +245,9 @@
                         <th
                            class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
                            Order ID</th>
+                        <th
+                           class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                           Tanggal Pesanan</th>
                         <th
                            class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
                            Customer Email</th>
@@ -274,7 +285,13 @@
                                  <div class="flex items-center">
                                     {{ $order->id }}
                                  </div>
+                              </td>
 
+                              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                 <div class="flex items-center">
+                                    {{-- order date --}}
+                                    {{ $order->created_at }}
+                                 </div>
                               </td>
 
                               <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
@@ -298,7 +315,7 @@
                               </td>
                               <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                  @foreach ($order->products as $product)
-                                     {{ $product->name }}
+                                 <span class="text-sm font-semibold">{{ $loop->iteration }}. {{ $product->title }},</span><br>
                                  @endforeach 
                                  {{-- Debugging --}}
                                  {{-- {{ dd($order->products) }} --}}
@@ -313,15 +330,21 @@
                               <td class="text-sm font-medium leading-5 text-center whitespace-no-wrap border-b border-gray-200 ">
                                  {{ $order->total_price }}
                                </td>
-                              <td>
+                              <td class="text-sm font-medium leading-5 text-center whitespace-no-wrap border-b border-gray-200 ">
                                  @if ($order->status != 'done')
-                                    <a href="{{ route('markorder.done', $order->id) }}">Mark as Done</a>
+                                    <form action="{{ route('markorder.done', $order->id) }}" method="POST">
+                                       @csrf
+                                       <button type="submit" class="btn">Mark as Done</button>  
+                                    </form>
                                  @else
-                                    <p>Done</p>
+                                    <p class="mx-auto">Done</p>
                                  @endif
                               </td>
                            </tr>
                         @endforeach
+                        <tr>
+                           <td colspan="10" class="p-5 text-center">{{ $orders->links('vendor.pagination.custom') }}</td>
+                       </tr>
                      @endif
                   </tbody>
                </table>

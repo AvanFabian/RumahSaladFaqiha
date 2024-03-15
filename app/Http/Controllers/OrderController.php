@@ -56,6 +56,9 @@ class OrderController extends Controller
     
         // Format the message
         $message = "New order from {$request->nama} | ({$request->email}). ";
+        $message .= "Phone: {$request->telp}. ";
+        $message .= "Address: {$request->alamat}. ";
+        $message .= "Order ID: {$order->id}. ";
 
         // Format the WhatsApp URL
         $whatsAppNumber = '6282140843000';
@@ -78,7 +81,7 @@ class OrderController extends Controller
         $order->update(['status' => 'done']);
 
         // Redirect the admin back to the dashboard
-        return redirect()->route('chart');
+        return redirect()->route('admin.dashboard')->with('success', 'Order marked as done.');
     }
 
 }
