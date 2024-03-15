@@ -15,7 +15,6 @@ class OrderController extends Controller
         $request->validate([
             'telp' => 'required',
             'alamat' => 'required',
-            'buktitransfer' => 'required|file|max:2048|mimes:jpeg,png,svg',
             'catatan' => 'required',
         ]);
     
@@ -35,11 +34,6 @@ class OrderController extends Controller
             return $item->product->harga * $item->quantity;
         });
     
-        // Store the transfer proof image and get its path
-        $buktitransferPath = $request->file('buktitransfer')->store('buktitransfer', 'public');
-        
-        // dd($request->nama);
-
         // Create a new order
         $order = Order::create([
             'user_id' => auth()->id(),
@@ -47,7 +41,6 @@ class OrderController extends Controller
             'username' => $request->nama,
             'telp' => $request->telp,
             'alamat' => $request->alamat,
-            'buktitransfer' => $buktitransferPath,
             'status' => 'pending',
             'catatan' => $request->catatan,
             'total_price' => $total_price,
@@ -61,8 +54,18 @@ class OrderController extends Controller
         // Delete the user's cart items
         $cart->items()->delete();
     
-        // Redirect the user to a success page
-        return redirect()->route('chart');
+        // Format the message
+        $message = "New order from {$request->nama} | ({$request->email}). ";
+
+        // Format the WhatsApp URL
+        $whatsAppNumber = '6282140843000';
+        $whatsAppUrl = 'https://wa.me/' . $whatsAppNumber . '?text=' . urlencode($message);
+
+        // Redirect to the WhatsApp URL
+        return redirect($whatsAppUrl);
+
+        // Redirect the user to the invoice page
+        // return redirect()->route('chart');
     }
 
     // Show the order success page
@@ -78,8 +81,4 @@ class OrderController extends Controller
         return redirect()->route('chart');
     }
 
-    // public function OrderSuccess(Request $request)
-    // {
-    //     return view('order.OrderSuccess');    
-    // }
 }

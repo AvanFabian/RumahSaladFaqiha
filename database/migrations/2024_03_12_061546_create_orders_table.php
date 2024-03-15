@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('username');
             $table->string('telp');
             $table->string('alamat');
-            $table->string('buktitransfer');
             $table->string('status')->default('pending');
             $table->string('catatan');
             $table->integer('total_price');
