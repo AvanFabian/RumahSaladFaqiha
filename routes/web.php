@@ -9,6 +9,7 @@ use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\Auth\UserAuthController;
+use App\Http\Controllers\HistoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,6 +69,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/order/success', [OrderController::class, 'orderSuccess'])->name('order.success');
     // mark order as done
     Route::post('/order/{orderId}/done', [OrderController::class, 'markOrderDone'])->name('markorder.done');
+    // history
+    Route::get('/history', [HistoryController::class, 'index'])->name('history.index');
 });
 
 require __DIR__.'/auth.php';

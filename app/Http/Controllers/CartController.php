@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Storage;
 
 class CartController extends Controller
 {
-
     public function cart()
     {
     // Get the current user's cart

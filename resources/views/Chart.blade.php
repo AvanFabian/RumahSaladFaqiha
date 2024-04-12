@@ -77,12 +77,6 @@
                   <button type="submit"
                      class="btn bg-[#D14D72] text-white lg:w-[160px] lg:mx-auto lg:mt-4">Submit</button>
                </form>
-               {{-- @php
-                  $order = Order::find($id);
-               @endphp --}}
-               {{--  --}}
-               {{-- <a href="{{ route('orders.invoice', $order->id) }}">View Invoice</a> --}}
-               {{--  --}}
             </div>
             {{-- Sisi Kanan: Tagihan Pembayaran + List Produk  --}}
             <div class="w-full lg:flex lg:flex-col lg:basis-1/2 lg:gap-y-4">
@@ -229,17 +223,3 @@
       });
    </script>
 @endsection
-
-                  {{-- <label
-                     class="file-input cursor-pointer lg:justify-start file-input-secondary bg-[#8d334e31] w-full flex  items-center gap-2">
-                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill=""
-                        class="w-4 h-4 lg:ml-4 opacity-70">
-                        <path
-                           d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z" />
-                        <path
-                           d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
-                     </svg>
-                     <span class="lg:ml-3 text-gray">Upload Bukti Transaksi</span>
-                     <input type="file" id="fileInput" name="buktitransfer" class="hidden" />
-                     <span id="nama-file"></span>
-                  </label> --}}

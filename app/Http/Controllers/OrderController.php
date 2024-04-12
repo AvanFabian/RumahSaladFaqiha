@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Cart;
+use App\Models\History;
 
 class OrderController extends Controller
 {
@@ -52,23 +53,34 @@ class OrderController extends Controller
         }
     
         // Delete the user's cart items
-        $cart->items()->delete();
+        // $cart->items()->delete();
+
+        // Create a new history
+        foreach ($cart->items as $item) {
+            History::create([
+                'user_id' => auth()->id(),
+                'product_id' => $item->product_id,
+                'quantity' => $item->quantity,
+            ]);
+            $item->delete();
+        }
     
         // Format the message
-        $message = "New order from {$request->nama} | ({$request->email}). ";
-        $message .= "Phone: {$request->telp}. ";
-        $message .= "Address: {$request->alamat}. ";
-        $message .= "Order ID: {$order->id}. ";
+        $message = "Halo, aku mau pesan, Order ID: {$order->id}. ";
 
         // Format the WhatsApp URL
         $whatsAppNumber = '6282140843000';
         $whatsAppUrl = 'https://wa.me/' . $whatsAppNumber . '?text=' . urlencode($message);
 
         // Redirect to the WhatsApp URL
-        return redirect($whatsAppUrl);
+        // return redirect($whatsAppUrl);
 
-        // Redirect the user to the invoice page
-        // return redirect()->route('chart');
+        // Redirect to the history page
+        return redirect()->route('history.index')->with([
+            'whatsAppUrl' => $whatsAppUrl,
+            'message' => 'Order submitted successfully. Click the button below to send a WhatsApp message to the seller.',
+        ]);
+
     }
 
     // Show the order success page
