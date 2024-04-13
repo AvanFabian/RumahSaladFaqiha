@@ -11,7 +11,7 @@
          <p class="text-xl text-[#8D334E] drop-shadow-xl">
             Nikmati salad buatan rumah terbaik di kota Malang, dibuat dengan sempurna hanya untukmu!
          </p>
-         <a href="#"
+         <a href="#menusalad"
             class="btn bg-[#D14D72] hover:bg-[#f0618a] text-lg rounded-[20px] font-bold w-[180px] p-1 mx-auto text-[#F8F4EC] lg:mx-0">
             Pesan Sekarang!
          </a>
@@ -41,11 +41,10 @@
             <div class="flex flex-col w-full my-auto gap-y-9">
                <h3 class="text-6xl font-bold text-[#8D334E] drop-shadow-xl">Mengapa Salad Kami Istimewa?</h3>
                <div class="flex lg:w-[590px]">
-                  <p class="font-semibold text-base text-[#57375D]">
-                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                     Voluptatibus qui ea ullam, enim tempora ipsum fuga alias quae
-                     ratione a officiis id temporibus autem? Quod nemo facilis
-                     cupiditate. Ex, vel?
+                  <p class="font-semibold text-base text-[#57375D] capitalize"style="line-height: 1.75;">
+                     Dengan campuran segar dari sayuran organik yang dipilih secara cermat, penyajian yang kreatif, dan
+                     dressing buatan sendiri yang memikat, salad kami mempersembahkan pengalaman gastronomi yang tak
+                     terlupakan bagi para penikmat makanan yang menghargai kualitas dan keberlanjutan.
                   </p>
                </div>
             </div>
@@ -205,40 +204,19 @@
             <div class="hidden lg:flex rounded-xl w-full lg:w-[320px] pb-8 drop-shadow-xl">
             </div>
          @else
-         @foreach ($reviews as $review)
-            <div
-               class="flex mx-auto px-4 py-6 lg:w-[320px] lg:px-8 lg:py-[48px] bg-[#fcc8d165] rounded lg:rounded-custom60">
-               <div class="flex flex-col lg:gap-y-5 mx-auto text-center">
-                  <img src="{{ asset('assets/images/quote-img.png') }}" alt="" class="lg:w-16 mx-auto" />
-                  <p class="text-[#8D334E] text-xl mt-7 mb-7 font-semibold">
-                     {{ $review->komentar }}
-                  </p>
-                  <h3 class="text-2xl font-bold text-[#8D334E]">- {{ $review->nama }}</h3>
+            @foreach ($reviews as $review)
+               <div
+                  class="flex mx-auto px-4 py-6 lg:w-[320px] lg:px-8 lg:py-[48px] bg-[#fcc8d165] rounded lg:rounded-custom60">
+                  <div class="flex flex-col lg:gap-y-5 mx-auto text-center">
+                     <img src="{{ asset('assets/images/quote-img.png') }}" alt="" class="lg:w-16 mx-auto" />
+                     <p class="text-[#8D334E] text-xl mt-7 mb-7 font-semibold">
+                        {{ $review->komentar }}
+                     </p>
+                     <h3 class="text-2xl font-bold text-[#8D334E]">- {{ $review->nama }}</h3>
+                  </div>
                </div>
-            </div>
-         @endforeach
+            @endforeach
          @endif
-      </div>
-   </section>
-
-   {{-- Sosmed --}}
-   <section class="contact lg:flex lg:flex-col lg:gap-y-9 mx-2 lg:mx-0 lg:px-20 bg-[#F8F4EC]" id="contact">
-      <div class="w-full text-center my-16">
-         <h1 class="text-7xl capitalize font-bold">
-            <span class="text-[#8D334E] drop-shadow-xl">Media</span>
-            <span class="text-[#ffababc7]">Sosial</span>
-         </h1>
-      </div>
-
-      <div class="flex flex-row">
-         {{-- {/* gambar */} --}}
-         <div class="">
-
-         </div>
-         {{-- {/* akun sosmed */} --}}
-         <div class="">
-
-         </div>
       </div>
    </section>
 

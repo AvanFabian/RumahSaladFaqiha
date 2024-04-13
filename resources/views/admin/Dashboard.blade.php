@@ -7,10 +7,10 @@
       {{-- Title + Tombol --}}
       <div class="flex w-full flex-row mb-4 justify-between">
          <div class="self-end px-4 py-2 rounded-md bg-sky-500 text-sky-100 hover:bg-sky-600 font-bold ">
-            Produk
+           Daftar Produk
          </div>
          <a class="px-4 py-2 rounded-md bg-sky-500 text-sky-100 hover:bg-sky-600 font-bold "
-            href="{{ route('produk.create') }}" target="_blank">Create Post</a>
+            href="{{ route('produk.create') }}" target="_blank">Tambah Produk</a>
       </div>
       {{-- Tabel Produk --}}
       <div class="flex flex-col">
@@ -128,10 +128,10 @@
       {{-- Title + Tombol Review  --}}
       <div class="flex lg:mt-8 w-full flex-row mb-4 justify-between">
          <div class="self-end px-4 py-2 rounded-md bg-sky-500 text-sky-100 hover:bg-sky-600 font-bold ">
-            Review
+            Daftar Review
          </div>
          <a class="px-4 py-2 rounded-md bg-sky-500 text-sky-100 hover:bg-sky-600 font-bold "
-            href="{{ route('review.create') }}" target="_blank">Create Review</a>
+            href="{{ route('review.create') }}" target="_blank">Tambahkan Review</a>
       </div>
       {{-- Tabel Review --}}
       <div class="flex flex-col">
@@ -231,7 +231,7 @@
       {{-- Title List Order  --}}
       <div class="flex lg:mt-8 w-full flex-row mb-4 justify-between">
          <div class="self-end px-4 py-2 rounded-md bg-sky-500 text-sky-100 hover:bg-sky-600 font-bold ">
-            List Order
+            Daftar Pesanan
          </div>
       </div>
       {{-- Tabel List Order --}}

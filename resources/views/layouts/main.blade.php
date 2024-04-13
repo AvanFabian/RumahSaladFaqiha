@@ -21,7 +21,8 @@
 <body class="relative min-h-screen">
    {{-- Navbar --}}
    <header class="header relative">
-      @if (isset($isChart))
+      {{-- Isset ischart ishistory --}}
+      @if (isset($isChart) || isset($isHistory))
          <a href="{{ route('home') }}"
             class="lg:absolute lg:left-3 lg:top-4 btn uppercase font-bold px-2 lg:px-2 text-[#F8F4EC] bg-[#FF3FA4] hover:bg-[#ff61b5] rounded-2xl">
             <svg class="lg:w-[32px] w-[24px] h-[24px] lg:h-[32px] text-gray-800 dark:text-white" aria-hidden="true"
@@ -37,14 +38,14 @@
       {{-- {/* Ini NAVBAR */} --}}
       <nav class="transition-all duration-300 ease-in-out">
          {{-- {/* menu tampilan dekstop */} --}}
-         @if (!isset($isChart))
+         {{-- check route --}}
+         @if (Route::currentRouteName() == 'history' || Route::currentRouteName() == 'chart')
             <div class="hidden lg:flex lg:flex-row lg:text-white gap-x-6">
                <a href="#home" class="capitalize hover:text-[#FF9BD2]">home</a>
-               <a href="#about" class="capitalize hover:text-[#FF9BD2]">about</a>
+               <a href="#about" class="capitalize hover:text-[#FF9BD2]">tentang Kami</a>
                <a href="#menusalad" class="capitalize hover:text-[#FF9BD2]">menu salad</a>
                <a href="#menulain" class="capitalize hover:text-[#FF9BD2]">menu lain</a>
-               <a href="#review" class="capitalize hover:text-[#FF9BD2]">review</a>
-               <a href="#sosmed" class="capitalize hover:text-[#FF9BD2]">sosmed</a>
+               <a href="#review" class="capitalize hover:text-[#FF9BD2]">ulasan</a>
             </div>
          @endif
       </nav>
@@ -81,18 +82,18 @@
    </header>
    {{-- End Navbar --}}
    {{-- Content --}}
-   <div class="bg-[#F8F4EC]">
+   <div class="bg-[#F8F4EC] min-h-screen">
       @yield('content')
    </div>
    {{-- End Content --}}
 
-   {{-- Footer --}}
-   <footer class="footer footer-center flex p-7 justify-center bg-[#F8F4EC] text-base-content">
-      <aside>
-         <span class="text-[#8D334E] text-xl ">By Rumah Salad Faqiha | All Rights Reserved</span>
-      </aside>
-   </footer>
-   {{-- End Footer --}}
+{{-- Footer --}}
+<footer class="footer footer-center flex p-7 justify-center bg-[#F8F4EC] text-base-content sticky bottom-0 w-full">
+   <aside>
+      <span class="text-[#8D334E] text-xl ">By Rumah Salad Faqiha | All Rights Reserved</span>
+   </aside>
+</footer>
+{{-- End Footer --}}
 </body>
 
 </html>
