@@ -18,7 +18,7 @@
    <link rel="shortcut icon" type="image/png" href="{{ url('') }}">
 </head>
 
-<body class="relative min-h-screen">
+<body class="bg-[#F8F4EC] relative min-h-screen">
    {{-- Navbar --}}
    <header class="header relative">
       {{-- Isset ischart ishistory --}}
@@ -53,7 +53,7 @@
       {{-- {/* icon navbar untuk screen dekstop */} --}}
       <div class="flex flex-row gap-x-4 lg:gap-11">
          <div class="my-auto">
-            <a href="{{ route('chart') }}" target="_blank">
+            <a href="{{ route('chart') }}">
                <svg class="w-[32px] h-[32px] text-gray-800 dark:text-white" aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -81,19 +81,21 @@
       </div>
    </header>
    {{-- End Navbar --}}
-   {{-- Content --}}
-   <div class="bg-[#F8F4EC] min-h-screen">
-      @yield('content')
+   <div class="flex flex-col lg:min-h-screen">
+      {{-- Content --}}
+      <div class="flex-grow">
+         @yield('content')
+      </div>
+      {{-- End Content --}}
+   
+      {{-- Footer --}}
+      <footer class="footer footer-center flex p-7 justify-center bg-[#F8F4EC] text-base-content">
+         <aside>
+            <span class="text-[#8D334E] text-xl ">By Rumah Salad Faqiha | All Rights Reserved</span>
+         </aside>
+      </footer>
+      {{-- End Footer --}}
    </div>
-   {{-- End Content --}}
-
-{{-- Footer --}}
-<footer class="footer footer-center flex p-7 justify-center bg-[#F8F4EC] text-base-content sticky bottom-0 w-full">
-   <aside>
-      <span class="text-[#8D334E] text-xl ">By Rumah Salad Faqiha | All Rights Reserved</span>
-   </aside>
-</footer>
-{{-- End Footer --}}
 </body>
 
 </html>

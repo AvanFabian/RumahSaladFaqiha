@@ -10,7 +10,7 @@
            Daftar Produk
          </div>
          <a class="px-4 py-2 rounded-md bg-sky-500 text-sky-100 hover:bg-sky-600 font-bold "
-            href="{{ route('produk.create') }}" target="_blank">Tambah Produk</a>
+            href="{{ route('produk.create') }}">Tambah Produk</a>
       </div>
       {{-- Tabel Produk --}}
       <div class="flex flex-col">
@@ -131,7 +131,7 @@
             Daftar Review
          </div>
          <a class="px-4 py-2 rounded-md bg-sky-500 text-sky-100 hover:bg-sky-600 font-bold "
-            href="{{ route('review.create') }}" target="_blank">Tambahkan Review</a>
+            href="{{ route('review.create') }}">Tambahkan Review</a>
       </div>
       {{-- Tabel Review --}}
       <div class="flex flex-col">

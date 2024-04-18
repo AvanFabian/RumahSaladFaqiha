@@ -12,7 +12,7 @@
             Nikmati salad buatan rumah terbaik di kota Malang, dibuat dengan sempurna hanya untukmu!
          </p>
          <a href="#menusalad"
-            class="btn bg-[#D14D72] hover:bg-[#f0618a] text-lg rounded-[20px] font-bold w-[180px] p-1 mx-auto text-[#F8F4EC] lg:mx-0">
+            class="btn bg-[#D14D72] hover:bg-[#f0618a] text-lg rounded-[20px] font-bold w-[180px] h-20 p-1 mx-auto text-[#F8F4EC] lg:mx-0">
             Pesan Sekarang!
          </a>
       </div>
@@ -62,12 +62,16 @@
          <div class="flex flex-col h-fit gap-y-6 mb-16">
             <div class="flex flex-col w-full text-center my-auto gap-y-9">
                <h3 class="text-6xl font-bold text-[#8D334E] drop-shadow-xl">Mengapa Salad Kami Istimewa?</h3>
-               <p class="font-semibold text-base mx-auto w-3/4 text-[#57375D]">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Voluptatibus qui ea ullam, enim tempora ipsum fuga alias quae
-                  ratione a officiis id temporibus autem? Quod nemo facilis
-                  cupiditate. Ex, vel?
-               </p>
+               <div class="flex flex-col font-semibold mx-auto w-3/4 gap-y-2">
+                  <p class="text-xl text-[#57375D] text-justify">
+                     Dengan campuran segar dari sayuran organik yang dipilih secara cermat, penyajian yang kreatif, dan
+                     dressing buatan sendiri yang memikat.
+                  </p>
+                  <p class="text-xl text-[#57375D] text-justify">
+                     Salad kami mempersembahkan pengalaman gastronomi yang tak
+                     terlupakan bagi para penikmat makanan yang menghargai kualitas dan keberlanjutan.
+                  </p>
+               </div>
             </div>
          </div>
       </div>
@@ -219,6 +223,5 @@
          @endif
       </div>
    </section>
-
 
 @endsection

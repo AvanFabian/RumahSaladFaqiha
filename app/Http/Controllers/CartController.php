@@ -15,7 +15,11 @@ class CartController extends Controller
     {
     // Get the current user's cart
     $cart = Cart::where('user_id', auth()->id())->first();
-    $cartItems = CartItem::where('cart_id', $cart->id)->get();
+    if ($cart) {
+        $cartItems = CartItem::where('cart_id', $cart->id)->get();
+    } else {
+        $cartItems = collect();
+    }
     // dd($cartItems);
     $user = Auth::user(); // Get the currently authenticated user
 
