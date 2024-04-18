@@ -94,6 +94,12 @@
 
 </body>
 
+{{--  Import sweetalert2  --}}
+<script>
+   const Swal = require('sweetalert2')
+</script>
+
+{{-- script Bawaan template --}}
 <script>
    /*Toggle dropdown list*/
    /*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
