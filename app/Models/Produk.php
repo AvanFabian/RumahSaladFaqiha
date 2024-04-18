@@ -20,4 +20,9 @@ class Produk extends Model
     {
         return $this->belongsToMany(Order::class)->withPivot('quantity');
     }
+
+    public function cartItems()
+{
+    return $this->hasMany(CartItem::class, 'product_id');
+}
 }

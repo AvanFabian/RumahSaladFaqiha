@@ -83,10 +83,10 @@
 
                            <td class="text-sm font-medium whitespace-no-wrap border-b border-gray-200 ">
                               <!-- Delete button -->
-                              <form method="POST" action="{{ route('produk.destroy', $product->id) }}">
+                              <form method="POST" id="deleteproduk{{ $product->id }}" action="{{ route('produk.destroy', $product->id) }}">
                                  @csrf
                                  @method('DELETE')
-                                 <button type="submit" onclick="event.preventDefault(); confirmDelete({{ $product->id }});">
+                                 <button type="submit" onclick="event.preventDefault(); confirmDeleteProduk({{ $product->id }});">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-600 hover:text-red-800"
                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -102,6 +102,7 @@
                         </tr>
                      @endforelse
                   </tbody>
+                  {{-- Pagination --}}
                   <tfoot>
                      <tr>
                         <td colspan="5" class="p-5 text-center">
@@ -178,10 +179,10 @@
 
                            <td class="text-sm font-medium whitespace-no-wrap border-b border-gray-200 ">
                               <!-- Delete button -->
-                              <form method="POST" action="{{ route('produk.destroy', $review->id) }}">
+                              <form method="POST" id="deletereview{{ $review->id }}" action="{{ route('review.destroy', $review->id) }}">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit">
+                                <button type="submit" onclick="event.preventDefault(); confirmDeleteReview({{ $review->id }});">
                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-600 hover:text-red-800"
                                       fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -334,7 +335,7 @@
 
    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
    <script>
-      function confirmDelete(id) {
+      function confirmDeleteProduk(id) {
          Swal.fire({
             title: 'Apakah Yakin Ingin Menghapus Produk?',
             text: "Produk akan Diberi Label Nonaktif dan Aksi ini tidak dapat dibatalkan!",
@@ -345,7 +346,23 @@
             confirmButtonText: 'Ya, Hapus!',
          }).then((result) => {
             if (result.isConfirmed) {
-               document.getElementById('deleteForm' + id).submit();
+               document.getElementById('deleteproduk' + id).submit();
+            }
+         })
+      }
+
+      function confirmDeleteReview(id) {
+         Swal.fire({
+            title: 'Apakah Yakin Ingin Menghapus Review Pengguna ini?',
+            text: "Review akan Dihapus dan Aksi ini tidak dapat dibatalkan!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Hapus!',
+         }).then((result) => {
+            if (result.isConfirmed) {
+               document.getElementById('deletereview' + id).submit();
             }
          })
       }

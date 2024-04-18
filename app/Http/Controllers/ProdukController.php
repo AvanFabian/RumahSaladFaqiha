@@ -104,12 +104,16 @@ class ProdukController extends Controller
 
 
     // Hapus produk
-    public function destroy(Produk $id_produk)
+    public function destroy($id_produk)
     {
-        // Delete the product option
-        // $produk->opsiProduk->delete();
+        // Find the product
+        $product = Produk::findOrFail($id_produk);
 
-        $id_produk->delete();
+        // Delete the cart items that reference the product
+        $product->cartItems()->delete();
+    
+        // Delete the product
+        $product->delete();
 
         // Redirect to the products
         return redirect()->route('admin.dashboard')
