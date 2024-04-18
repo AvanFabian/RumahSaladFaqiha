@@ -24,10 +24,6 @@
                      class="block w-full mt-1 border-gray-300 rounded-md shadow-sm placeholder:text-gray-400 placeholder:text-right focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 {{ $errors->has('title') ? 'border-red-500' : '' }}"
                      type="text" id="title" name="title" placeholder="Product Title" value="{{ $produk->title }}"
                      required />
-
-                  @if ($errors->has('title'))
-                     <p class="text-red-500 text-xs mt-2">{{ $errors->first('title') }}</p>
-                  @endif
                </div>
 
                <!-- Description -->
@@ -38,10 +34,6 @@
                   <textarea id="desc" name="desc"
                      class="block w-full mt-1 border-gray-300 rounded-md shadow-sm placeholder:text-gray-400 placeholder:text-right focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 {{ $errors->has('desc') ? 'border-red-500' : '' }}"
                      rows="4" placeholder="Product Description" required>{{ $produk->desc }}</textarea>
-
-                  @if ($errors->has('desc'))
-                     <p class="text-red-500 text-xs mt-2">{{ $errors->first('desc') }}</p>
-                  @endif
                </div>
 
                <!-- Image -->
@@ -52,10 +44,6 @@
                   <input
                      class="block w-full mt-1 border-gray-300 rounded-md shadow-sm placeholder:text-gray-400 placeholder:text-right focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 {{ $errors->has('image') ? 'border-red-500' : '' }}"
                      type="file" id="image" name="image" placeholder="Product Image URL" />
-
-                  @if ($errors->has('image'))
-                     <p class="text-red-500 text-xs mt-2">{{ $errors->first('image') }}</p>
-                  @endif
                </div>
 
                <!-- Price -->
@@ -83,10 +71,6 @@
                      <option value="menusalad" {{ $produk->type == 'menusalad' ? 'selected' : '' }}>Menu Salad</option>
                      <option value="menulain" {{ $produk->type == 'menulain' ? 'selected' : '' }}>Menu Lain</option>
                   </select>
-
-                  @if ($errors->has('harga'))
-                     <p class="text-red-500 text-xs mt-2">{{ $errors->first('harga') }}</p>
-                  @endif
                </div>
 
                <div class="flex items-center justify-start mt-4 gap-x-2">
@@ -103,4 +87,27 @@
          </div>
       </div>
    </div>
+
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+   <script>
+      document.addEventListener('DOMContentLoaded', function() {
+         @if ($errors->any())
+            Swal.fire({
+               icon: 'error',
+               title: 'Oops...',
+               text: 'Something went wrong!',
+               footer: '<ul>@foreach ($errors->all() as $error)<li>{{ $error }}</li>@endforeach</ul>'
+            })
+         @endif
+
+         @if (session('success'))
+            Swal.fire({
+               icon: 'success',
+               title: 'Success',
+               text: '{{ session('success') }}',
+            })
+         @endif
+      });
+   </script>
+
 @endsection

@@ -11,16 +11,6 @@
          </div>
 
          <div class="w-full px-6 py-4 bg-white rounded shadow-md ring-1 ring-gray-900/10">
-            {{-- HAndle error pas ngisi form --}}
-            {{-- @if ($errors->any())
-               <div class="alert alert-error mb-4">
-                  <ol>
-                     @foreach ($errors->all() as $error)
-                        <li class="font-semibold text-white">{{ $error }}</li>
-                     @endforeach
-                  </ol>
-               </div>
-            @endif --}}
             <form method="POST" action="{{ route('produk.store') }}" enctype="multipart/form-data">
                @csrf
                <!-- Judul -->
@@ -32,10 +22,6 @@
                   <input
                      class="block w-full mt-1 border-gray-300 rounded-md shadow-sm placeholder:text-gray-400 placeholder:text-right focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 {{ $errors->has('title') ? 'border-red-500' : '' }}"
                      type="text" id="title" name="title" placeholder="Product Title" />
-
-                  @if ($errors->has('title'))
-                     <p class="text-red-500 text-xs mt-2">{{ $errors->first('title') }}</p>
-                  @endif
                </div>
 
                <!-- Description -->
@@ -46,10 +32,6 @@
                   <textarea id="desc" name="desc"
                      class="block w-full mt-1 border-gray-300 rounded-md shadow-sm placeholder:text-gray-400 placeholder:text-right focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 {{ $errors->has('desc') ? 'border-red-500' : '' }}"
                      rows="4" placeholder="Product Description"></textarea>
-
-                  @if ($errors->has('desc'))
-                     <p class="text-red-500 text-xs mt-2">{{ $errors->first('desc') }}</p>
-                  @endif
                </div>
 
                <!-- Image -->
@@ -61,9 +43,6 @@
                      <input type="file" id="image" name="image"
                         class="file-input text-white file-input-bordered w-full max-w-xs {{ $errors->has('image') ? 'border-red-500' : '' }}" />
                      <span id="file-name"></span>
-                     @if ($errors->has('image'))
-                        <p class="text-red-500 text-xs mt-2">{{ $errors->first('image') }}</p>
-                     @endif
                   </label>
                </div>
 
@@ -76,9 +55,6 @@
                      class="block w-full mt-1 border-gray-300 rounded-md shadow-sm placeholder:text-gray-400 placeholder:text-right focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 {{ $errors->has('harga') ? 'border-red-500' : '' }}"
                      type="number" id="harga" name="harga" placeholder="Product Price" step="1000" min="0" required />
 
-                  @if ($errors->has('harga'))
-                     <p class="text-red-500 text-xs mt-2">{{ $errors->first('harga') }}</p>
-                  @endif
                </div>
 
                <!-- Kategori -->
@@ -96,13 +72,6 @@
                      <p class="text-red-500 text-xs mt-2">{{ $errors->first('harga') }}</p>
                   @endif
                </div>
-
-               {{-- Success message --}}
-               @if (session('success'))
-                  <div class="alert alert-success mt-3">
-                     {{ session('success') }}
-                  </div>
-               @endif
                <div class="flex items-center justify-start mt-4 gap-x-2">
                   <button type="submit"
                      class="px-6 py-2 text-sm font-semibold rounded-md shadow-md text-sky-100 bg-sky-500 hover:bg-sky-700 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300">
@@ -117,6 +86,29 @@
          </div>
       </div>
    </div>
+
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+   <script>
+      document.addEventListener('DOMContentLoaded', function () {
+         @if ($errors->any())
+            Swal.fire({
+               icon: 'error',
+               title: 'Oops...',
+               text: 'Something went wrong!',
+               footer: '<ul>@foreach ($errors->all() as $error)<li>{{ $error }}</li>@endforeach</ul>'
+            })
+         @endif
+   
+         @if (session('success'))
+            Swal.fire({
+               icon: 'success',
+               title: 'Success',
+               text: '{{ session('success') }}',
+            })
+         @endif
+      });
+   </script>
+
    <script>
       document.getElementById('image').addEventListener('change', function(e) {
           document.getElementById('file-name').textContent = e.target.files[0].name;

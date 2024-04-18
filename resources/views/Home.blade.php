@@ -88,7 +88,7 @@
       </div>
 
       {{-- success message --}}
-      @if (session('success'))
+      {{-- @if (session('success'))
          <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
             <strong class="font-bold">Success!</strong>
             <span class="block sm:inline">{{ session('success') }}</span>
@@ -101,7 +101,7 @@
                </svg>
             </span>
          </div>
-      @endif
+      @endif --}}
       <div class="grid grid-cols-2 lg:grid-cols-3 place-items-center gap-y-8 lg:gap-y-24">
          @if ($menusalad->isEmpty())
             <div class="hidden lg:flex rounded-xl w-full lg:w-[320px] pb-8 drop-shadow-xl">
@@ -223,5 +223,17 @@
          @endif
       </div>
    </section>
+
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+   <script>
+      @if (session('success'))
+         Swal.fire({
+            title: 'Success!',
+            text: '{{ session('success') }}',
+            icon: 'success',
+            confirmButtonText: 'Tutup Pesan Ini'
+         });
+      @endif
+   </script>
 
 @endsection

@@ -39,7 +39,7 @@
       <nav class="transition-all duration-300 ease-in-out">
          {{-- {/* menu tampilan dekstop */} --}}
          {{-- check route --}}
-         @if (Route::currentRouteName() == 'history' || Route::currentRouteName() == 'chart')
+         @if (Route::currentRouteName() == 'history' || Route::currentRouteName() == 'cart')
             <div class="hidden lg:flex lg:flex-row lg:text-white gap-x-6">
                <a href="#home" class="capitalize hover:text-[#FF9BD2]">home</a>
                <a href="#about" class="capitalize hover:text-[#FF9BD2]">tentang Kami</a>
@@ -97,10 +97,5 @@
       {{-- End Footer --}}
    </div>
 </body>
-
-{{--  Import sweetalert2  --}}
-<script>
-   const Swal = require('sweetalert2')
-</script>
 
 </html>

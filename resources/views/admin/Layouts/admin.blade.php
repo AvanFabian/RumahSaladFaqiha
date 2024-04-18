@@ -94,10 +94,6 @@
 
 </body>
 
-{{--  Import sweetalert2  --}}
-<script>
-   const Swal = require('sweetalert2')
-</script>
 
 {{-- script Bawaan template --}}
 <script>

@@ -15,22 +15,12 @@
             use App\Models\Order;
          @endphp
          @if (count($cartItems) == 0)
-         <div class="w-full h-screen flex items-center justify-content-center">
-            <h1 class="text-4xl font-bold text-black text-center mx-auto">Keranjang Anda Kosong</h1>
-          </div>
+            <div class="w-full h-screen flex items-center justify-content-center">
+               <h1 class="text-4xl font-bold text-black text-center mx-auto">Keranjang Anda Kosong</h1>
+            </div>
          @else
             {{-- Sisi Kiri: Form Data Diri  --}}
             <div class="lg:basis-1/2 ">
-               {{-- eror display --}}
-               @if ($errors->any())
-                  <div class="alert alert-error mb-4">
-                     <ol>
-                        @foreach ($errors->all() as $error)
-                           <li class="font-semibold text-white">{{ $error }}</li>
-                        @endforeach
-                     </ol>
-                  </div>
-               @endif
                <form action="{{ route('checkout.submit') }}" method="POST" class="w-full lg:flex lg:flex-col lg:gap-y-4"
                   enctype="multipart/form-data">
                   @csrf
@@ -74,8 +64,7 @@
                   </label>
 
                   <textarea class="textarea textarea-bordered bg-[#8d334e31]" placeholder="Catatan" name="catatan"></textarea>
-                  <button type="submit"
-                     class="btn bg-[#D14D72] text-white lg:w-[160px] lg:mx-auto lg:mt-4">Submit</button>
+                  <button type="submit" class="btn bg-[#D14D72] text-white lg:w-[160px] lg:mx-auto lg:mt-4">Pesan</button>
                </form>
             </div>
             {{-- Sisi Kanan: Tagihan Pembayaran + List Produk  --}}
@@ -216,6 +205,19 @@
       </div>
       </div>
    </section>
+
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+   @if ($errors->any())
+      <script>
+         Swal.fire({
+            title: 'Pemesanan Gagal!',
+            text: 'Lengkapi Data Diri Anda',
+            icon: 'error',
+            confirmButtonText: 'Tutup Pesan Ini'
+         });
+      </script>
+   @endif
+
    <script>
       // menampilkan nama file yang diupload
       document.getElementById('fileInput').addEventListener('change', function(e) {
