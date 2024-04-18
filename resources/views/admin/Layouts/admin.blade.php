@@ -15,64 +15,37 @@
    {{-- css --}}
    @vite('resources/css/app.css')
    {{-- web icon --}}
-   <link rel="shortcut icon" type="image/png" href="{{ url('') }}">
+   <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
 </head>
 
-<body class="relative lg:min-h-screen bg-[#d2d2d2]">
+<body class="relative lg:min-h-screen bg-[#F8F4EC]">
    {{-- Navbar --}}
-   <nav id="header" class="bg-[#f2f2f2] fixed w-full z-10 top-0 shadow lg:px-4">
+   <nav id="header" class="bg-[#D14D72] fixed w-full z-10 top-0 shadow lg:px-4">
+
       <div class="w-full container mx-auto flex items-center mt-0 lg:pt-5 lg:pb-5">
-         <div class="w-1/2">
-            <a class="text-gray-900 text-base xl:text-xl no-underline hover:no-underline font-bold" href="#">
+         <div class="flex flex-row w-1/2 items-center">
+            <a href="{{ route('home') }}"
+               class="btn uppercase font-bold px-2 lg:px-2 text-[#F8F4EC] bg-[#FF3FA4] hover:bg-[#ff61b5] rounded-2xl">
+               <svg class="lg:w-[32px] w-[24px] h-[24px] lg:h-[32px] text-gray-800 dark:text-white" aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                     d="M16 16.9V7a1 1 0 0 0-1.6-.8l-6 5a1 1 0 0 0 0 1.5l6 4.9a1 1 0 0 0 1.6-.8Z" />
+               </svg>
+            </a>
+            <a class="text-white text-base xl:text-xl no-underline hover:no-underline font-bold" href="#">
                <i class="fas fa-sun text-pink-600 pr-3"></i> Rumah Salad Faqiha
             </a>
          </div>
-         {{-- Navigasi --}}
-         {{-- <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-[#f2f2f2] z-20"
-            id="nav-content">
-            <ul class="list-reset lg:flex flex-1 items-center px-4 md:px-0">
-               <li class="mr-6 my-2 md:my-0">
-                  <a href="#"
-                     class="block py-1 md:py-3 pl-1 align-middle text-pink-600 no-underline hover:text-gray-900 border-b-2 border-orange-600 hover:border-orange-600">
-                     <i class="fas fa-home fa-fw mr-3 text-pink-600"></i><span class="pb-1 md:pb-0 text-sm">Home</span>
-                  </a>
-               </li>
-               <li class="mr-6 my-2 md:my-0">
-                  <a href="#"
-                     class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-gray-900 border-b-2 border-white hover:border-pink-500">
-                     <i class="fas fa-tasks fa-fw mr-3"></i><span class="pb-1 md:pb-0 text-sm">Tasks</span>
-                  </a>
-               </li>
-               <li class="mr-6 my-2 md:my-0">
-                  <a href="#"
-                     class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-gray-900 border-b-2 border-white hover:border-purple-500">
-                     <i class="fa fa-envelope fa-fw mr-3"></i><span class="pb-1 md:pb-0 text-sm">Messages</span>
-                  </a>
-               </li>
-               <li class="mr-6 my-2 md:my-0">
-                  <a href="#"
-                     class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-gray-900 border-b-2 border-white hover:border-green-500">
-                     <i class="fas fa-chart-area fa-fw mr-3"></i><span class="pb-1 md:pb-0 text-sm">Analytics</span>
-                  </a>
-               </li>
-               <li class="mr-6 my-2 md:my-0">
-                  <a href="#"
-                     class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-gray-900 border-b-2 border-white hover:border-red-500">
-                     <i class="fa fa-wallet fa-fw mr-3"></i><span class="pb-1 md:pb-0 text-sm">Payments</span>
-                  </a>
-               </li>
-            </ul>
-         </div> --}}
          {{-- Profile User --}}
          <div class="w-1/2 lg:flex flex-row gap-x-3 h-full pr-0 lg:justify-end items-center">
             @auth('admin')
-               <span class="hidden text-base font-bold text-black md:inline-block">Selamat Datang,
+               <span class="hidden text-base font-bold text-white md:inline-block">Selamat Datang,
                   {{ Auth::guard('admin')->user()->username }} </span>
                <form method="POST" action="{{ route('admin.logout') }}">
                   @csrf
                   <button type="submit"
-                     class="inline-block my-auto px-4 py-2 text-xs font-semibold text-white uppercase transition-colors duration-200 transform bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:bg-red-500">
-                     Logout
+                     class="btn uppercase font-bold lg:px-7 text-[#F8F4EC] bg-[#FF3FA4] hover:bg-[#ff61b5] rounded-2xl">
+                     Keluar&nbsp;
                   </button>
                </form>
             @endauth

@@ -3,7 +3,7 @@
 
 @section('content')
    {{-- home --}}
-   <section class="home relative bg-gradient-to-r from-[#FDFFEC] to-[#DEA9AF]" id="home">
+   <section class="home relative bg-gradient-to-r from-[#FDFFEC] to-[#DEA9AF]" id="home" data-aos="fade-right" data-aos-duration="800">
       <div class="flex flex-col w-3/4 gap-y-32 lg:w-1/2 lg:gap-y-8 lg:px-20">
          <h3 class="text-8xl font-bold text-[#8D334E] drop-shadow-xl ">
             Rumah Salad Faqiha
@@ -21,7 +21,7 @@
    </section>
 
    {{-- About --}}
-   <section class="about lg:flex lg:flex-col lg:gap-y-9 mx-2 lg:mx-0 lg:px-20 bg-[#F8F4EC]" id="about">
+   <section class="about lg:flex lg:flex-col lg:gap-y-9 mx-2 lg:mx-0 lg:px-20 bg-[#F8F4EC]" id="about" data-aos="fade-left" data-aos-duration="800">
       {{-- {/* margin atas bawah */} --}}
       <div class="w-full text-center my-16">
          <h1 class="text-7xl capitalize font-bold">
@@ -78,7 +78,7 @@
    </section>
 
    {{-- Menu Salad --}}
-   <section class="menu lg:flex lg:flex-col lg:gap-y-9 mx-2 lg:mx-0 lg:px-20 bg-[#F8F4EC]" id="menusalad">
+   <section class="menu lg:flex lg:flex-col lg:gap-y-9 mx-2 lg:mx-0 lg:px-20 bg-[#F8F4EC]" id="menusalad" data-aos="fade-right" data-aos-duration="800">
       {{-- <div class="flex flex-col my-16"> --}}
       <div class="w-full text-center my-16">
          <h1 class="text-7xl capitalize font-bold">
@@ -141,7 +141,7 @@
    </section>
 
    {{-- Menu lain --}}
-   <section class="menulain lg:flex lg:flex-col lg:gap-y-9 mx-2 lg:mx-0 lg:px-20 bg-[#F8F4EC]" id="menulain">
+   <section class="menulain lg:flex lg:flex-col lg:gap-y-9 mx-2 lg:mx-0 lg:px-20 bg-[#F8F4EC]" id="menulain" data-aos="fade-left" data-aos-duration="800">
       <div class="w-full text-center my-16">
          <h1 class="text-7xl capitalize font-bold">
             <span class="text-[#8D334E] drop-shadow-xl">Menu</span>
@@ -187,7 +187,7 @@
    </section>
 
    {{-- Review --}}
-   <section class="review lg:flex lg:flex-col lg:gap-y-9 mx-2 lg:mx-0 lg:px-20 bg-[#F8F4EC]" id="review">
+   <section class="review lg:flex lg:flex-col lg:gap-y-9 mx-2 lg:mx-0 lg:px-20 bg-[#F8F4EC]" id="review" data-aos="fade-right" data-aos-duration="800">
       <div class="w-full text-center my-16">
          <h1 class="text-7xl capitalize font-bold">
             <span class="text-[#8D334E] drop-shadow-xl">Apa Kata</span>
@@ -224,12 +224,16 @@
       </div>
    </section>
 
+   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+   <script>
+      AOS.init();
+    </script>
+
    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
    <script>
       @if (session('success'))
          Swal.fire({
-            title: 'Success!',
-            text: '{{ session('success') }}',
+            title: 'Produk Ditambahkan Kedalam Keranjang!',
             icon: 'success',
             confirmButtonText: 'Tutup Pesan Ini'
          });

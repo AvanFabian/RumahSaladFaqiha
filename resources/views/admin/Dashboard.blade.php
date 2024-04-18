@@ -5,11 +5,11 @@
    <!-- Index Post -->
    <div class="lg:py-16 max-w-7xl mx-auto mt-8">
       {{-- Title + Tombol --}}
-      <div class="flex w-full flex-row mb-4 justify-between">
-         <div class="self-end px-4 py-2 rounded-md bg-sky-500 text-sky-100 font-bold ">
+      <div class="flex w-full flex-row mb-4 justify-between items-center">
+         <div class="self-end px-4 py-3 rounded-md text-black text-2xl font-bold ">
             Daftar Produk
          </div>
-         <a class="px-4 py-2 rounded-md bg-sky-500 text-sky-100 hover:bg-sky-600 font-bold "
+         <a class="px-4 py-3 rounded-md bg-[#F9E8E4] text-black  hover:bg-[#d0c2bf] font-bold "
             href="{{ route('produk.create') }}">Tambah Produk</a>
       </div>
       {{-- Tabel Produk --}}
@@ -114,11 +114,11 @@
          </div>
       </div>
       {{-- Title + Tombol Review  --}}
-      <div class="flex lg:mt-8 w-full flex-row mb-4 justify-between">
-         <div class="self-end px-4 py-2 rounded-md bg-sky-500 text-sky-100 font-bold ">
+      <div class="flex lg:mt-8 w-full flex-row mb-4 justify-between items-center">
+         <div class="self-end px-4 py-3 rounded-md text-black text-2xl font-bold ">
             Daftar Review
          </div>
-         <a class="px-4 py-2 rounded-md bg-sky-500 text-sky-100 hover:bg-sky-600 font-bold "
+         <a class="px-4 py-3 rounded-md bg-[#F9E8E4] text-black hover:bg-[#d0c2bf] font-bold "
             href="{{ route('review.create') }}">Tambah Review</a>
       </div>
       {{-- Tabel Review --}}
@@ -205,8 +205,8 @@
 
 
       {{-- Title List Order  --}}
-      <div class="flex lg:mt-8 w-full flex-row mb-4 justify-between">
-         <div class="self-end px-4 py-2 rounded-md bg-sky-500 text-sky-100 font-bold ">
+      <div class="flex lg:mt-8 w-full flex-row mb-4 justify-between items-center">
+         <div class="self-end px-4 py-3 rounded-md text-black text-2xl font-bold ">
             Daftar Pesanan
          </div>
       </div>

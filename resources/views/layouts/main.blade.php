@@ -12,10 +12,11 @@
    <!-- Fonts -->
    <link rel="preconnect" href="https://fonts.bunny.net">
    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
    {{-- css --}}
    @vite('resources/css/app.css')
    {{-- web icon --}}
-   <link rel="shortcut icon" type="image/png" href="{{ url('') }}">
+   <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
 </head>
 
 <body class="bg-[#F8F4EC] relative min-h-screen">
