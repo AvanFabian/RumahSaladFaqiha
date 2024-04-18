@@ -6,8 +6,8 @@
    <div class="lg:py-16 max-w-7xl mx-auto mt-8">
       {{-- Title + Tombol --}}
       <div class="flex w-full flex-row mb-4 justify-between">
-         <div class="self-end px-4 py-2 rounded-md bg-sky-500 text-sky-100 hover:bg-sky-600 font-bold ">
-           Daftar Produk
+         <div class="self-end px-4 py-2 rounded-md bg-sky-500 text-sky-100 font-bold ">
+            Daftar Produk
          </div>
          <a class="px-4 py-2 rounded-md bg-sky-500 text-sky-100 hover:bg-sky-600 font-bold "
             href="{{ route('produk.create') }}">Tambah Produk</a>
@@ -83,29 +83,17 @@
 
                            <td class="text-sm font-medium whitespace-no-wrap border-b border-gray-200 ">
                               <!-- Delete button -->
-                              <button type="button" onclick="deleteModal.showModal()">
-                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-600 hover:text-red-800"
-                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                       d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                 </svg>
-                              </button>
-
-                              <!-- Delete confirmation modal -->
-                              <dialog id="deleteModal" class="modal">
-                                 <div class="modal-box">
-                                    <h3 class="font-bold text-lg">Confirm Deletion</h3>
-                                    <p class="py-4">Are you sure you want to delete this product?</p>
-                                    <div class="modal-action">
-                                       <form method="POST" action="{{ route('produk.destroy', $product->id) }}">
-                                          @csrf
-                                          @method('DELETE')
-                                          <button type="submit" class="btn">Yes, delete it</button>
-                                       </form>
-                                       <button class="btn" onclick="deleteModal.close()">No, keep it</button>
-                                    </div>
-                                 </div>
-                              </dialog>
+                              <form method="POST" action="{{ route('produk.destroy', $product->id) }}">
+                                 @csrf
+                                 @method('DELETE')
+                                 <button type="submit" onclick="event.preventDefault(); confirmDelete({{ $product->id }});">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-600 hover:text-red-800"
+                                       fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                          d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                    </svg>
+                                 </button>
+                              </form>
                            </td>
                         </tr>
                      @empty
@@ -127,11 +115,11 @@
       </div>
       {{-- Title + Tombol Review  --}}
       <div class="flex lg:mt-8 w-full flex-row mb-4 justify-between">
-         <div class="self-end px-4 py-2 rounded-md bg-sky-500 text-sky-100 hover:bg-sky-600 font-bold ">
+         <div class="self-end px-4 py-2 rounded-md bg-sky-500 text-sky-100 font-bold ">
             Daftar Review
          </div>
          <a class="px-4 py-2 rounded-md bg-sky-500 text-sky-100 hover:bg-sky-600 font-bold "
-            href="{{ route('review.create') }}">Tambahkan Review</a>
+            href="{{ route('review.create') }}">Tambah Review</a>
       </div>
       {{-- Tabel Review --}}
       <div class="flex flex-col">
@@ -190,29 +178,17 @@
 
                            <td class="text-sm font-medium whitespace-no-wrap border-b border-gray-200 ">
                               <!-- Delete button -->
-                              <button type="button" onclick="deleteModal.showModal()">
-                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-600 hover:text-red-800"
-                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                       d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                 </svg>
-                              </button>
-
-                              <!-- Delete confirmation modal -->
-                              <dialog id="deleteModal" class="modal">
-                                 <div class="modal-box">
-                                    <h3 class="font-bold text-lg">Confirm Deletion</h3>
-                                    <p class="py-4">Are you sure you want to delete this product?</p>
-                                    <div class="modal-action">
-                                       <form method="POST" action="{{ route('review.destroy', $review->id) }}">
-                                          @csrf
-                                          @method('DELETE')
-                                          <button type="submit" class="btn">Yes, delete it</button>
-                                       </form>
-                                       <button class="btn" onclick="deleteModal.close()">No, keep it</button>
-                                    </div>
-                                 </div>
-                              </dialog>
+                              <form method="POST" action="{{ route('produk.destroy', $review->id) }}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit">
+                                   <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-600 hover:text-red-800"
+                                      fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                         d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                   </svg>
+                                </button>
+                             </form>
                            </td>
                         </tr>
                      @empty
@@ -221,7 +197,7 @@
                         </tr>
                      @endforelse
                   </tbody>
-                  
+
                </table>
             </div>
          </div>
@@ -230,15 +206,14 @@
 
       {{-- Title List Order  --}}
       <div class="flex lg:mt-8 w-full flex-row mb-4 justify-between">
-         <div class="self-end px-4 py-2 rounded-md bg-sky-500 text-sky-100 hover:bg-sky-600 font-bold ">
+         <div class="self-end px-4 py-2 rounded-md bg-sky-500 text-sky-100 font-bold ">
             Daftar Pesanan
          </div>
       </div>
       {{-- Tabel List Order --}}
       <div class="flex flex-col">
          <div class="overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-            <div
-               class="inline-block min-w-full align-middle border-b border-gray-200 shadow sm:rounded-lg">
+            <div class="inline-block min-w-full align-middle border-b border-gray-200 shadow sm:rounded-lg">
                <table class="min-w-full overflow-x-auto ">
                   <thead>
                      <tr>
@@ -315,11 +290,12 @@
                               </td>
                               <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                  @foreach ($order->products as $product)
-                                 <span class="text-sm font-semibold">{{ $loop->iteration }}. {{ $product->title }},</span><br>
-                                 @endforeach 
+                                    <span class="text-sm font-semibold">{{ $loop->iteration }}.
+                                       {{ $product->title }},</span><br>
+                                 @endforeach
                                  {{-- Debugging --}}
                                  {{-- {{ dd($order->products) }} --}}
-                             </td>
+                              </td>
 
                               <td
                                  class="text-sm font-medium leading-5 text-center whitespace-no-wrap border-b border-gray-200 ">
@@ -327,14 +303,16 @@
                               </td>
 
                               </td>
-                              <td class="text-sm font-medium leading-5 text-center whitespace-no-wrap border-b border-gray-200 ">
+                              <td
+                                 class="text-sm font-medium leading-5 text-center whitespace-no-wrap border-b border-gray-200 ">
                                  {{ $order->total_price }}
-                               </td>
-                              <td class="text-sm font-medium leading-5 text-center whitespace-no-wrap border-b border-gray-200 ">
+                              </td>
+                              <td
+                                 class="text-sm font-medium leading-5 text-center whitespace-no-wrap border-b border-gray-200 ">
                                  @if ($order->status != 'done')
                                     <form action="{{ route('markorder.done', $order->id) }}" method="POST">
                                        @csrf
-                                       <button type="submit" class="btn">Mark as Done</button>  
+                                       <button type="submit" class="btn">Mark as Done</button>
                                     </form>
                                  @else
                                     <p class="mx-auto">Done</p>
@@ -343,8 +321,9 @@
                            </tr>
                         @endforeach
                         <tr>
-                           <td colspan="10" class="p-5 text-center">{{ $orders->links('vendor.pagination.custom') }}</td>
-                       </tr>
+                           <td colspan="10" class="p-5 text-center">{{ $orders->links('vendor.pagination.custom') }}
+                           </td>
+                        </tr>
                      @endif
                   </tbody>
                </table>
@@ -352,4 +331,36 @@
          </div>
       </div>
    </div>
+
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+   <script>
+      function confirmDelete(id) {
+         Swal.fire({
+            title: 'Apakah Yakin Ingin Menghapus Produk?',
+            text: "Produk akan Diberi Label Nonaktif dan Aksi ini tidak dapat dibatalkan!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Hapus!',
+         }).then((result) => {
+            if (result.isConfirmed) {
+               document.getElementById('deleteForm' + id).submit();
+            }
+         })
+      }
+   </script>
+
+   <script>
+      document.addEventListener('DOMContentLoaded', function() {
+         @if (session('deleted'))
+            Swal.fire({
+               icon: 'success',
+               title: 'Deleted',
+               text: '{{ session('deleted') }}',
+            })
+         @endif
+      });
+   </script>
+
 @endsection

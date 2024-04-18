@@ -113,6 +113,7 @@ class ProdukController extends Controller
 
         // Redirect to the products
         return redirect()->route('admin.dashboard')
-            ->with('success', 'Produk deleted successfully');
+        ->with('success', 'Produk Added successfully')
+        ->with('deleted', 'Produk Deleted successfully');
     }
 }

@@ -39,7 +39,6 @@ Route::middleware('admin')->group(function () {
     // dashboard admin
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
     // Product routes
-    // Route::get('/produk', [ProdukController::class, 'index'])->name('produk.index');
     Route::get('/produk/create', [ProdukController::class, 'create'])->name('produk.create');
     Route::post('/produk', [ProdukController::class, 'store'])->name('produk.store');
     Route::get('/produk/{id_produk}/edit', [ProdukController::class, 'edit'])->name('produk.edit');
