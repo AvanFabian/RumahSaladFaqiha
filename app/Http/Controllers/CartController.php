@@ -51,7 +51,7 @@ class CartController extends Controller
         // Save the cart item
         $cartItem->save();
 
-        return redirect()->back()->with('success', 'Product added to cart successfully');
+        return redirect()->back()->with('success', 'Produk berhasil ditambahkan ke keranjang');
     }
 
     // Update the quantity of a cart item

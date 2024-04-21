@@ -92,6 +92,18 @@ body {
   z-index: 1000;
 }
 
+.header-admin {
+  background: #D14D72;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
 .header .logo img {
   max-width: 75px;
 }

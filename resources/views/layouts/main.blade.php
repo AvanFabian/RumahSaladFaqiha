@@ -90,7 +90,7 @@
       {{-- End Content --}}
    
       {{-- Footer --}}
-      <footer class="footer footer-center flex p-7 justify-center bg-[#F8F4EC] text-base-content">
+      <footer class="footer footer-center mb-2 flex p-7 justify-center bg-[#F8F4EC] text-base-content">
          <aside>
             <span class="text-[#8D334E] text-xl ">By Rumah Salad Faqiha | All Rights Reserved</span>
          </aside>

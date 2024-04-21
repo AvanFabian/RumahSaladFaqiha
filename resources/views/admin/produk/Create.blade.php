@@ -21,7 +21,7 @@
 
                   <input
                      class="block w-full mt-1 border-gray-300 rounded-md shadow-sm placeholder:text-gray-400 placeholder:text-right focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 {{ $errors->has('title') ? 'border-red-500' : '' }}"
-                     type="text" id="title" name="title" placeholder="Product Title" />
+                     type="text" id="title" name="title" placeholder="Judul Produk" />
                </div>
 
                <!-- Description -->
@@ -31,7 +31,7 @@
                   </label>
                   <textarea id="desc" name="desc"
                      class="block w-full mt-1 border-gray-300 rounded-md shadow-sm placeholder:text-gray-400 placeholder:text-right focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 {{ $errors->has('desc') ? 'border-red-500' : '' }}"
-                     rows="4" placeholder="Product Description"></textarea>
+                     rows="4" placeholder="Deskripsi Produk"></textarea>
                </div>
 
                <!-- Image -->
@@ -53,7 +53,7 @@
                   </label>
                   <input
                      class="block w-full mt-1 border-gray-300 rounded-md shadow-sm placeholder:text-gray-400 placeholder:text-right focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 {{ $errors->has('harga') ? 'border-red-500' : '' }}"
-                     type="number" id="harga" name="harga" placeholder="Product Price" step="1000" min="0" required />
+                     type="number" id="harga" name="harga" placeholder="Harga Produk" step="1000" min="0" required />
 
                </div>
 
@@ -74,11 +74,11 @@
                </div>
                <div class="flex items-center justify-start mt-4 gap-x-2">
                   <button type="submit"
-                     class="px-6 py-2 text-sm font-semibold rounded-md shadow-md text-sky-100 bg-sky-500 hover:bg-sky-700 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300">
+                     class="px-6 py-2 text-sm rounded-md shadow-md text-black  hover:bg-[#d0c2bf] font-bold focus:outline-none focus:border-gray-900 focus:ring ring-gray-300">
                      Simpan
                   </button>
                   <a href="{{ route('admin.dashboard') }}"
-                     class="px-6 py-2 text-sm font-semibold text-gray-100 bg-gray-400 rounded-md shadow-md hover:bg-gray-600 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300">
+                     class="px-6 py-2 text-sm font-bold text-gray-100 bg-gray-400 rounded-md shadow-md hover:bg-gray-600 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300">
                      Kembali
                   </a>
                </div>

@@ -48,7 +48,7 @@ class ProdukController extends Controller
         ]);
     
         return redirect()->route('produk.create') 
-        ->with('success', 'Product created successfully.');
+        ->with('success', 'Produk Berhasil Ditambahkan.');
     }
 
 
@@ -99,7 +99,7 @@ class ProdukController extends Controller
         ]);
     
         return redirect()->route('admin.dashboard')
-            ->with('success', 'Product updated successfully');
+            ->with('success', 'Produk berhasil diperbarui');
     }
 
 
