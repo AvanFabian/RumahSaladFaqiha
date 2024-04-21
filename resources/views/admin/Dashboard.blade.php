@@ -3,7 +3,7 @@
 
 @section('content')
    <!-- Index Post -->
-   <div class="lg:py-16 max-w-7xl mx-auto mt-[44px]">
+   <div class="lg:py-16 max-w-7xl lg:mx-auto my-[54px] mx-2">
       {{-- Title + Tombol --}}
       <div class="flex w-full flex-row mb-4 justify-between items-center">
          <div class="self-end px-4 py-3 rounded-md text-black text-2xl font-bold ">

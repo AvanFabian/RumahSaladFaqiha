@@ -18,7 +18,7 @@
    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
 </head>
 
-<body class="relative lg:min-h-screen bg-[#F8F4EC]">
+<body class="relative lg:min-h-screen bg-[#F2F2F2]">
    {{-- Navbar --}}
    <header class="header-admin p-2 relative">
       {{-- Isset ischart ishistory --}}
