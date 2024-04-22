@@ -23,14 +23,14 @@
    <header class="header-admin p-2 relative">
       {{-- Isset ischart ishistory --}}
          <a href="{{ route('home') }}"
-            class="lg:absolute lg:left-3 lg:top-4 btn uppercase font-bold px-2 lg:px-2 text-[#F8F4EC] bg-[#FF3FA4] hover:bg-[#ff61b5] rounded-2xl">
+            class="absolute lg:relative left-3 top-4 btn uppercase font-bold px-2 text-[#F8F4EC] bg-[#FF3FA4] hover:bg-[#ff61b5] rounded-2xl">
             <svg class="lg:w-[32px] w-[24px] h-[24px] lg:h-[32px] text-gray-800 dark:text-white" aria-hidden="true"
                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M16 16.9V7a1 1 0 0 0-1.6-.8l-6 5a1 1 0 0 0 0 1.5l6 4.9a1 1 0 0 0 1.6-.8Z" />
             </svg>
          </a>
-      <a href="#" class="logo">
+      <a href="#" class="logo ">
          <img src="{{ asset('assets/images/logofaqiha.png') }}" alt="logoproduk" class="rounded-full w-19 h-16" />
       </a>
 
