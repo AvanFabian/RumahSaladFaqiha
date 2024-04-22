@@ -17,7 +17,7 @@
 3. Install PHP dependencies:
 
     ```bash
-    composer install
+    composer install dan npm install
     ```
 
 4. Copy `.env.example` ke `.env`:
