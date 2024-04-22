@@ -32,13 +32,9 @@
     php artisan key:generate
     ```
 
-6. Migrasi database (satu-satu):
+6. Migrasi database:
 
     ```bash
-    php artisan migrate --path=/database/migrations/2014_10_12_000000_create_users_table.php
-    php artisan migrate --path=/database/migrations/2024_02_27_142451_create_produks_table.php
-    php artisan migrate --path=/database/migrations/2024_03_12_061546_create_orders_table.php
-    php artisan migrate --path=/database/migrations/2024_03_10_103731_create_carts_table.php
     php artisan migrate
     ```
 7. Buka terminal 1, ketik:
