@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('info_tokos', function (Blueprint $table) {
             $table->id();
-            $table->text('info');
-            $table->text('kebijakan');
+            $table->text('no_whatsapp');
+            $table->text('akun_ig');
+            $table->text('akun_fb');
+            $table->text('akun_tiktok');
             $table->timestamps();
         });
     }

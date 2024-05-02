@@ -83,10 +83,12 @@
 
                            <td class="text-sm font-medium whitespace-no-wrap border-b border-gray-200 ">
                               <!-- Delete button -->
-                              <form method="POST" id="deleteproduk{{ $product->id }}" action="{{ route('produk.destroy', $product->id) }}">
+                              <form method="POST" id="deleteproduk{{ $product->id }}"
+                                 action="{{ route('produk.destroy', $product->id) }}">
                                  @csrf
                                  @method('DELETE')
-                                 <button type="submit" onclick="event.preventDefault(); confirmDeleteProduk({{ $product->id }});">
+                                 <button type="submit"
+                                    onclick="event.preventDefault(); confirmDeleteProduk({{ $product->id }});">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-600 hover:text-red-800"
                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -179,17 +181,19 @@
 
                            <td class="text-sm font-medium whitespace-no-wrap border-b border-gray-200 ">
                               <!-- Delete button -->
-                              <form method="POST" id="deletereview{{ $review->id }}" action="{{ route('review.destroy', $review->id) }}">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" onclick="event.preventDefault(); confirmDeleteReview({{ $review->id }});">
-                                   <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-600 hover:text-red-800"
-                                      fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                         d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                   </svg>
-                                </button>
-                             </form>
+                              <form method="POST" id="deletereview{{ $review->id }}"
+                                 action="{{ route('review.destroy', $review->id) }}">
+                                 @csrf
+                                 @method('DELETE')
+                                 <button type="submit"
+                                    onclick="event.preventDefault(); confirmDeleteReview({{ $review->id }});">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-600 hover:text-red-800"
+                                       fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                          d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                    </svg>
+                                 </button>
+                              </form>
                            </td>
                         </tr>
                      @empty
@@ -203,8 +207,107 @@
             </div>
          </div>
       </div>
+      {{--  --}}
+      {{-- Title + Tombol Sosmed  --}}
+      <div class="flex lg:mt-8 w-full flex-row mb-4 justify-between items-center">
+         <div class="self-end px-4 py-3 rounded-md text-black text-2xl font-bold ">
+            Daftar Sosmed
+         </div>
+         <a class="px-4 py-3 rounded-md bg-[#F9E8E4] text-black hover:bg-[#d0c2bf] font-bold "
+            href="{{ route('info-toko.create') }}">Tambah Akun Sosmed</a>
+      </div>
+      {{-- Tabel Sosmed --}}
+      <div class="flex flex-col">
+         <div class="overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+            <div
+               class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
+               <table class="min-w-full">
+                  <thead>
+                     <tr>
+                        <th
+                           class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                           Akun Facebook</th>
+                        <th
+                           class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                           Akun Instagram</th>
+                        <th
+                           class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                           Akun Tiktok</th>
+                        <th
+                           class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                           Nomor Whatsapp</th>
+                        <th class="px-6 py-3 text-sm text-left text-gray-500 border-b border-gray-200 bg-gray-50"
+                           colspan="3">
+                           Aksi</th>
+                     </tr>
+                  </thead>
 
+                  <tbody class="bg-white">
+                     @forelse ($infotoko as $toko)
+                        <tr>
+                           <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                              <div class="flex items-center">
+                                 {{ $toko->akun_fb }}
+                              </div>
 
+                           </td>
+
+                           <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                              <div class="text-sm leading-5 text-gray-900">
+                                 {{ $toko->akun_ig }}
+                              </div>
+                           </td>
+
+                           <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                              <p>{{ $toko->akun_tiktok }}</p>
+                           </td>
+
+                           <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                              <p>{{ $toko->no_whatsapp }}</p>
+                           </td>
+                           <td
+                              class="text-sm font-medium leading-5 text-center whitespace-no-wrap border-b border-gray-200 ">
+                              {{-- Edit --}}
+                              <a href="{{ route('info-toko.edit', $toko->id) }}"
+                                 class="text-gray-600 hover:text-gray-900">
+                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                       d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                 </svg>
+                              </a>
+
+                           </td>
+
+                           <td class="text-sm font-medium whitespace-no-wrap border-b border-gray-200 ">
+                              <!-- Delete button -->
+                              <form method="POST" id="deletetoko{{ $toko->id }}"
+                                 action="{{ route('info-toko.destroy', $toko->id) }}">
+                                 @csrf
+                                 @method('DELETE')
+                                 <button type="submit"
+                                    onclick="event.preventDefault(); confirmDeleteReview({{ $toko->id }});">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                       class="w-6 h-6 text-red-600 hover:text-red-800" fill="none"
+                                       viewBox="0 0 24 24" stroke="currentColor">
+                                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                          d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                    </svg>
+                                 </button>
+                              </form>
+                           </td>
+                        </tr>
+                     @empty
+                        <tr>
+                           <td colspan="5" class="p-5 text-center">Belum ada Akun Sosmed Ditambahkan</td>
+                        </tr>
+                     @endforelse
+                  </tbody>
+
+               </table>
+            </div>
+         </div>
+      </div>
       {{-- Title List Order  --}}
       <div class="flex lg:mt-8 w-full flex-row mb-4 justify-between items-center">
          <div class="self-end px-4 py-3 rounded-md text-black text-2xl font-bold ">

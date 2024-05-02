@@ -10,7 +10,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\Auth\UserAuthController;
 use App\Http\Controllers\HistoryController;
-
+use App\Http\Controllers\TokoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,6 +45,13 @@ Route::middleware('admin')->group(function () {
     Route::put('/produk/{id_produk}', [ProdukController::class, 'update'])->name('produk.update');
     Route::delete('/produk/{id_produk}', [ProdukController::class, 'destroy'])->name('produk.destroy');
     
+    // Info Toko routes
+    Route::get('/info-toko/create', [TokoController::class, 'create'])->name('info-toko.create');
+    Route::post('/info-toko', [TokoController::class, 'store'])->name('info-toko.store');
+    Route::get('/info-toko/{toko}/edit', [TokoController::class, 'edit'])->name('info-toko.edit');
+    Route::put('/info-toko/{toko}', [TokoController::class, 'update'])->name('info-toko.update');
+    Route::delete('/info-toko/{toko}', [TokoController::class, 'destroy'])->name('info-toko.destroy');
+
     // Review routes
     Route::get('/review/create', [ReviewController::class, 'create'])->name('review.create');
     Route::post('/review', [ReviewController::class, 'store'])->name('review.store');

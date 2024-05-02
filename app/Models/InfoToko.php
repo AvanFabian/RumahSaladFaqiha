@@ -9,7 +9,9 @@ class InfoToko extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'info',
-        'kebijakan',
+        'no_whatsapp',
+        'akun_ig',
+        'akun_fb',
+        'akun_tiktok',
     ];
 }
