@@ -286,7 +286,7 @@
                                  @csrf
                                  @method('DELETE')
                                  <button type="submit"
-                                    onclick="event.preventDefault(); confirmDeleteReview({{ $toko->id }});">
+                                    onclick="event.preventDefault(); confirmDeleteInfoToko({{ $toko->id }});">
                                     <svg xmlns="http://www.w3.org/2000/svg"
                                        class="w-6 h-6 text-red-600 hover:text-red-800" fill="none"
                                        viewBox="0 0 24 24" stroke="currentColor">
@@ -466,6 +466,21 @@
          }).then((result) => {
             if (result.isConfirmed) {
                document.getElementById('deletereview' + id).submit();
+            }
+         })
+      }
+      function confirmDeleteInfoToko(id) {
+         Swal.fire({
+            title: 'Apakah Yakin Ingin Menghapus Akun Sosmed  ini?',
+            text: "Akun sosmed akan Dihapus dan Aksi ini tidak dapat dibatalkan!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Hapus!',
+         }).then((result) => {
+            if (result.isConfirmed) {
+               document.getElementById('deletetoko' + id).submit();
             }
          })
       }

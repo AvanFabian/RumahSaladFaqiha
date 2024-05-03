@@ -52,7 +52,8 @@
                   </label>
                   <input
                      class="block w-full mt-1 border-gray-300 rounded-md shadow-sm placeholder:text-gray-400 placeholder:text-right focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 {{ $errors->has('no_whatsapp') ? 'border-red-500' : '' }}"
-                     type="number" id="no_whatsapp" name="no_whatsapp" placeholder="Link Nomor WhatsApp" required />
+                     type="tel" id="no_whatsapp" name="no_whatsapp" placeholder="Link Nomor WhatsApp" required
+                     oninput="convertToIndonesiaCode(this)" />
                </div>
 
                <div class="flex items-center justify-start mt-4 gap-x-2">
@@ -68,7 +69,7 @@
             </form>
          </div>
       </div>
-   </div>
+</div>
 
    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
    <script>
@@ -90,6 +91,15 @@
             })
          @endif
       });
+   </script>
+
+   <script>
+      function convertToIndonesiaCode(input) {
+         let value = input.value;
+         if (value.startsWith('0')) {
+            input.value = '62' + value.slice(1);
+         }
+      }
    </script>
 
    <script>

@@ -10,7 +10,8 @@ class TokoController extends Controller
     // Show the form to create shop information
     public function create()
     {
-        return view('admin.toko.create');
+        return view('admin.akunsosmed.Create');
+
     }
     // Store the shop information
     public function store(Request $request)
@@ -34,7 +35,7 @@ class TokoController extends Controller
     // Show the form to edit shop information
     public function edit(InfoToko $toko)
     {
-        return view('admin.toko.edit', compact('toko'));
+        return view('admin.akunsosmed.Edit', compact('toko'));
     }
     // Update the shop information
     public function update(Request $request, InfoToko $toko)

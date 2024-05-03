@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Cart;
 use App\Models\History;
+use App\Models\InfoToko;
 
 class OrderController extends Controller
 {
@@ -56,30 +57,32 @@ class OrderController extends Controller
         // $cart->items()->delete();
 
         // Create a new history
-        foreach ($cart->items as $item) {
-            History::create([
-                'user_id' => auth()->id(),
-                'product_id' => $item->product_id,
-                'quantity' => $item->quantity,
-            ]);
-            $item->delete();
-        }
+        // foreach ($cart->items as $item) {
+        //     History::create([
+        //         'user_id' => auth()->id(),
+        //         'product_id' => $item->product_id,
+        //         'quantity' => $item->quantity,
+        //     ]);
+        //     $item->delete();
+        // }
     
         // Format the message
         $message = "Halo, aku mau pesan, Order ID: {$order->id}. ";
 
         // Format the WhatsApp URL
-        $whatsAppNumber = '6282140843000';
+        $toko = InfoToko::first();
+        $whatsAppNumber = $toko->no_whatsapp;
+        $whatsAppNumber = '6282140843000'; // PENTING WOY, AMBIL DARI TABEL INFOTOKO
         $whatsAppUrl = 'https://wa.me/' . $whatsAppNumber . '?text=' . urlencode($message);
 
         // Redirect to the WhatsApp URL
-        // return redirect($whatsAppUrl);
+        return redirect($whatsAppUrl);
 
         // Redirect to the history page
-        return redirect()->route('history.index')->with([
-            'whatsAppUrl' => $whatsAppUrl,
-            'message' => 'Order submitted successfully. Click the button below to send a WhatsApp message to the seller.',
-        ]);
+        // return redirect()->route('history.index')->with([
+        //     'whatsAppUrl' => $whatsAppUrl,
+        //     'message' => 'Order submitted successfully. Click the button below to send a WhatsApp message to the seller.',
+        // ]);
 
     }
 
