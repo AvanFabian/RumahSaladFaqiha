@@ -30,7 +30,8 @@ class TokoController extends Controller
         $toko->akun_tiktok = $request->akun_tiktok;
         $toko->save();
 
-        return back()->with('message', 'Akun toko berhasil ditambahkan');
+        return redirect()->route('admin.dashboard')->with('success', 'Akun toko berhasil ditambahkan.');
+        // return back()->with('message', 'Akun toko berhasil ditambahkan');
     }
     // Show the form to edit shop information
     public function edit(InfoToko $toko)

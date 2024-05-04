@@ -16,12 +16,14 @@ class AdminController extends Controller
         $review = Review::paginate(5); // semua review
         $infotokos = InfoToko::paginate(5); // hanya satu toko
         $orders = Order::with('products')->paginate(5); // semua order (4 per halaman)
+        $hasInfoToko = InfoToko::exists(); // check if there is at least one record in the InfoToko table
 
         return view('admin.Dashboard', [
             'produk' => $produks,
             'ulasan' => $review,
             'infotoko' => $infotokos,
             'orders' => $orders,
+            'hasInfoToko' => $hasInfoToko, // pass the variable to the view
         ]);
     }
 }

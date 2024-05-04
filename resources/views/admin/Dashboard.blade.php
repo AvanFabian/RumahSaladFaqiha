@@ -100,7 +100,7 @@
                         </tr>
                      @empty
                         <tr>
-                           <td colspan="5" class="p-5 text-center">Belum ada Produk Ditambahkan</td>
+                           <td colspan="6" class="p-5 text-center">Belum ada Produk Ditambahkan</td>
                         </tr>
                      @endforelse
                   </tbody>
@@ -207,14 +207,14 @@
             </div>
          </div>
       </div>
-      {{--  --}}
       {{-- Title + Tombol Sosmed  --}}
       <div class="flex lg:mt-8 w-full flex-row mb-4 justify-between items-center">
          <div class="self-end px-4 py-3 rounded-md text-black text-2xl font-bold ">
             Daftar Sosmed
          </div>
-         <a class="px-4 py-3 rounded-md bg-[#F9E8E4] text-black hover:bg-[#d0c2bf] font-bold "
-            href="{{ route('info-toko.create') }}">Tambah Akun Sosmed</a>
+         <a class="px-4 py-3 rounded-md bg-[#F9E8E4] text-black hover:bg-[#d0c2bf] font-bold {{ $hasInfoToko ? 'opacity-50 cursor-not-allowed' : '' }}"
+            href="{{ $hasInfoToko ? '#' : route('info-toko.create') }}"
+            {{ $hasInfoToko ? 'onclick=event.preventDefault();' : '' }}>Tambah Akun Sosmed</a>
       </div>
       {{-- Tabel Sosmed --}}
       <div class="flex flex-col">
@@ -469,6 +469,7 @@
             }
          })
       }
+
       function confirmDeleteInfoToko(id) {
          Swal.fire({
             title: 'Apakah Yakin Ingin Menghapus Akun Sosmed  ini?',

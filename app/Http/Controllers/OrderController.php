@@ -72,7 +72,6 @@ class OrderController extends Controller
         // Format the WhatsApp URL
         $toko = InfoToko::first();
         $whatsAppNumber = $toko->no_whatsapp;
-        $whatsAppNumber = '6282140843000'; // PENTING WOY, AMBIL DARI TABEL INFOTOKO
         $whatsAppUrl = 'https://wa.me/' . $whatsAppNumber . '?text=' . urlencode($message);
 
         // Redirect to the WhatsApp URL

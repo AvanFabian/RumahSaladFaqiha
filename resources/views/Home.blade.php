@@ -49,6 +49,7 @@
                      terlupakan bagi para penikmat makanan yang menghargai kualitas dan keberlanjutan.
                   </p>
                   <!-- Add social media icons here -->
+                  @if($socialMedia)
                   <div class="flex justify-center gap-x-16 mt-4">
                      {{-- Facebook --}}
                      <a href="{{ $socialMedia->akun_fb }}" class="text-gray-500 hover:text-gray-800" target="_blank">
@@ -86,6 +87,7 @@
                         </svg>
                      </a>
                   </div>
+                  @endif
                </div>
             </div>
          </div>
