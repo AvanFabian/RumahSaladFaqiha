@@ -355,7 +355,7 @@
                   <tbody class="bg-white">
                      @if ($orders->isEmpty())
                         <tr>
-                           <td colspan="10" class="p-5 text-center">No Orders Yet</td>
+                           <td colspan="10" class="p-5 text-center">Belum ada Pesanan</td>
                         </tr>
                      @else
                         @foreach ($orders as $order)
