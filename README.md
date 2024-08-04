@@ -1,6 +1,5 @@
 # RumahSaladFaqiha
-Website Pemesanan Produk untuk Pelaku UMKM dengan Bahasa Pemrograman Laravel Native dengan Platform Hosting milik Departemen Elektro dan Informatika UM
-## Installation
+Website Pemesanan Produk untuk Pelaku UMKM 
 
 1. Clone repository:
 
