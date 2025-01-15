@@ -1,71 +1,36 @@
-# RumahSaladFaqiha
-Website Pemesanan Produk untuk Pelaku UMKM 
+# Jelajah Nusantara : Culture Education Platform
 
-1. Clone repository:
+## 📋 <a name="table">Table of Contents</a>
 
-    ```bash
-    git clone https://github.com/AvanFabian/RumahSaladFaqiha.git
-    ```
+1. ⚙️ [Tech Stack](#tech-stack)
+2. 🔗 [Pages](#pages)
 
-2. Navigate to the project directory:
+## <a name="tech-stack">⚙️ Tech Stack</a>
 
-    ```bash
-    cd RumahSaladFaqiha
-    ```
+- Laravel
+- Tailwind
 
-3. Install PHP dependencies:
+## <a name="pages">🤸 Pages</a>
 
-    ```bash
-    composer install dan npm install
-    ```
+| Admin Section 1                                                              
+| ----------------------------------------------------------------------------- 
+| <img src="https://github.com/AvanFabian/Jelajah-Nusantara/blob/main/public/github_readme/5.png" width="1080" />
+| Admin Section 2                                                              
+| ----------------------------------------------------------------------------- 
+| <img src="https://github.com/AvanFabian/Jelajah-Nusantara/blob/main/public/github_readme/6.png" width="1080" />
+| Landing Page                                                                                                  
+| -----------------------------------------------------------------------------
+| <img src="https://github.com/AvanFabian/Jelajah-Nusantara/blob/main/public/github_readme/1.png" width="1080" />
+| Main Section 1                                                         
+| ----------------------------------------------------------------------------- 
+| <img src="https://github.com/AvanFabian/Jelajah-Nusantara/blob/main/public/github_readme/2.png" width="1080" /> 
 
-4. Copy `.env.example` ke `.env`:
+| Main Section 2                                                               
+| -----------------------------------------------------------------------------
+| <img src="https://github.com/AvanFabian/Jelajah-Nusantara/blob/main/public/github_readme/3.png" width="1080" /> 
 
-    ```bash
-    cp .env.example .env
-    ```
+| Main Section 3                                                              
+| ----------------------------------------------------------------------------- 
+| <img src="https://github.com/AvanFabian/Jelajah-Nusantara/blob/main/public/github_readme/4.png" width="1080" />
 
-5. Generate laravel application key:
 
-    ```bash
-    php artisan key:generate
-    ```
-
-6. Migrasi database:
-
-    ```bash
-    php artisan migrate
-    ```
-7. Buka terminal 1, ketik:
-    ```bash
-    npm run dev
-    ```
-8. Buka terminal 2, ketik:
-    ```bash
-    php artisan serve
-    ```
-
-## Jangan langsung Push ke Branch "Main", tapi Bikin Branch Dulu:
-1. Cara Bikin Branch, jalankan:
-    ```bash
-    git branch -b "nama_branch" (gausah tanda petik)
-    ```
-    <br />
-2. Pastikan lagi branch kita saat ini: (biasanya auto switch setelah bikin branch) 
-    ```bash
-    git branch
-    ```
-    <br />
-3. Setelah Bikin Branch, "Commit & Push" dulu perubahan yang udh dibuat: <br />
-   ![Screenshot 2024-03-07 161022](https://github.com/AvanFabian/RumahSaladFaqiha/assets/113287159/f1eec7c9-e9e0-4506-b05b-0d7518750725) <br /> <br />
-
-4. Setelah itu lakukan pull request, tapi sebelum itu pastikan halaman commit telah kosong <br /> <br />
-   
-5. Supaya lebih mudah "pull request", Download Ekstensi VsCode "Github Pull Request", Cara Instalasi: <br /> <br />
-   A. Download Ekstensi: <br /> <br />
-   ![Screenshot 2024-03-07 153919](https://github.com/AvanFabian/RumahSaladFaqiha/assets/113287159/fa32015b-4185-420e-8786-d4ef19a3a328) <br /> <br />
-   B. Pastikan "halaman commit telah kosong" <br /> <br />
-   C. Pencet Icon "Github Pull Request" di sebelah kiri dan Klik Tombol Create Pull Request: <br /> <br />
-   ![Screenshot 2024-03-07 160511](https://github.com/AvanFabian/RumahSaladFaqiha/assets/113287159/9ae2cc7f-ed9c-4342-aa07-a58d575f230c) <br /> <br />
-   D. Setelah itu akan muncul halaman Pull Request, Sebelum Klik "Create", Pastikan "Base" branch atau branch yang akan ditimpa oleh perubahan branch kalian saat ini, sudah di-switch ke main: <br />
-   ![Screenshot 2024-03-07 160600](https://github.com/AvanFabian/RumahSaladFaqiha/assets/113287159/84df9f06-c967-4706-9c0d-304de8ab6d41) <br /> <br />
